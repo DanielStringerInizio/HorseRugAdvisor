@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Horse Rug Advisor V2</title>
+<title>Horse Rug Advisor</title>
 
 <style>
 
@@ -37,129 +37,133 @@ body {
     padding: 28px 18px 50px;
 }
 
+
+/* =========================
+   BRAND
+========================= */
+
 .brand {
     display: flex;
     align-items: center;
     gap: 12px;
+
     font-size: 21px;
     font-weight: bold;
+
     margin-bottom: 22px;
 }
 
 .logo {
     width: 42px;
     height: 42px;
+
     display: grid;
     place-items: center;
+
     border-radius: 50%;
+
     background: var(--green);
     color: white;
+
     font-size: 22px;
 }
+
+
+/* =========================
+   HERO
+========================= */
 
 .hero {
     background: var(--green);
     color: white;
+
     border-radius: 26px;
+
     padding: 42px;
+
     margin-bottom: 20px;
 }
 
 .hero h1 {
     max-width: 750px;
+
     margin: 6px 0 15px;
+
     font-size: clamp(38px, 6vw, 66px);
     line-height: 1;
+
     letter-spacing: -3px;
 }
 
 .hero p {
     max-width: 680px;
+
+    margin-bottom: 0;
+
     font-size: 18px;
     line-height: 1.55;
+
     color: #dce8e3;
 }
 
 .eyebrow {
     color: var(--tan);
+
     font-size: 12px;
     font-weight: bold;
+
     letter-spacing: 1.5px;
+
     text-transform: uppercase;
 }
 
+
+/* =========================
+   LAYOUT
+========================= */
+
 .grid {
     display: grid;
+
     grid-template-columns: 1.05fr 0.95fr;
+
     gap: 20px;
 }
 
 .card {
     background: var(--paper);
+
     border-radius: 22px;
+
     padding: 27px;
+
     border: 1px solid #e9e2d7;
 }
 
 h2 {
     margin: 7px 0 20px;
+
     font-size: 27px;
 }
 
-.fields {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-}
 
-label {
-    display: block;
-    margin-bottom: 6px;
-    font-size: 13px;
-    font-weight: bold;
-}
-
-select, input {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid var(--line);
-    border-radius: 11px;
-    background: white;
-    color: var(--text);
-    font-size: 14px;
-}
-
-button {
-    width: 100%;
-    padding: 15px;
-    border: none;
-    border-radius: 12px;
-    background: var(--green);
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-button:hover {
-    background: var(--green-light);
-}
-
-button:disabled {
-    opacity: 0.6;
-    cursor: wait;
-}
+/* =========================
+   LOCATION
+========================= */
 
 .location-box {
     background: #e7eee9;
+
     padding: 20px;
+
     border-radius: 18px;
+
     margin-bottom: 22px;
 }
 
 .location-row {
     display: flex;
+
     gap: 10px;
 }
 
@@ -170,56 +174,193 @@ button:disabled {
 
 .location-row button {
     width: auto;
+
     white-space: nowrap;
 }
 
 .status {
-    margin-top: 12px;
-    font-size: 13px;
-    color: var(--muted);
     min-height: 18px;
+
+    margin-top: 12px;
+
+    font-size: 13px;
+
+    color: var(--muted);
 }
+
+
+/* =========================
+   FORM
+========================= */
+
+.fields {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 15px;
+}
+
+label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 13px;
+    font-weight: bold;
+}
+
+select,
+input {
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid var(--line);
+
+    border-radius: 11px;
+
+    background: white;
+
+    color: var(--text);
+
+    font-size: 14px;
+}
+
+select:focus,
+input:focus {
+    outline: 3px solid rgba(40, 93, 79, 0.12);
+
+    border-color: var(--green-light);
+}
+
+
+/* =========================
+   WEATHER
+========================= */
 
 .weather-box {
     background: #e7eee9;
-    border-radius: 16px;
-    padding: 17px;
-    margin: 20px 0;
-}
 
-.weather-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
+    border-radius: 16px;
+
+    padding: 17px;
+
+    margin: 20px 0;
 }
 
 .weather-heading {
     display: flex;
+
     justify-content: space-between;
     align-items: center;
+
     gap: 10px;
+
     margin-bottom: 15px;
 }
 
 .weather-heading h3 {
     margin: 0;
+
     font-size: 15px;
+}
+
+.weather-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
 }
 
 .badge {
     background: white;
+
     color: var(--green);
+
     padding: 6px 10px;
+
     border-radius: 20px;
+
     font-size: 11px;
     font-weight: bold;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+button {
+    width: 100%;
+
+    padding: 15px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: var(--green);
+
+    color: white;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+button:hover {
+    background: var(--green-light);
+
+    transform: translateY(-1px);
+}
+
+button:disabled {
+    opacity: 0.6;
+
+    cursor: wait;
+}
+
+
+/* =========================
+   EMPTY RESULT
+========================= */
+
+.empty-result {
+    text-align: center;
+
+    padding: 70px 20px;
+
+    color: var(--muted);
+}
+
+.horse-icon {
+    font-size: 65px;
+
+    margin-bottom: 10px;
+}
+
+
+/* =========================
+   RESULTS
+========================= */
+
+#result {
+    display: none;
 }
 
 .recommendation {
     background: var(--green);
     color: white;
+
     border-radius: 18px;
+
     padding: 24px;
+
     margin-bottom: 15px;
 }
 
@@ -229,37 +370,57 @@ button:disabled {
 
 .recommendation small {
     text-transform: uppercase;
+
     letter-spacing: 1px;
+
     opacity: 0.8;
 }
 
 .rug-weight {
     font-size: 42px;
     font-weight: bold;
+
     margin: 6px 0;
+
+    letter-spacing: -1px;
 }
 
 .rug-type {
     font-size: 17px;
+
+    line-height: 1.4;
 }
+
+
+/* =========================
+   WEATHER SUMMARY
+========================= */
 
 .stats {
     display: grid;
+
     grid-template-columns: repeat(3, 1fr);
+
     gap: 8px;
+
     margin: 20px 0;
 }
 
 .stat {
     background: #f2ede4;
+
     border-radius: 12px;
+
     padding: 12px 5px;
+
     text-align: center;
 }
 
 .stat b {
     display: block;
+
     margin: 5px;
+
     font-size: 17px;
 }
 
@@ -267,36 +428,59 @@ button:disabled {
     color: var(--muted);
 }
 
+
+/* =========================
+   EXPLANATION
+========================= */
+
 .reason {
     border-top: 1px solid var(--line);
+
     padding-top: 18px;
+
     line-height: 1.6;
+
     color: #53645e;
+}
+
+.reason strong {
+    color: var(--text);
 }
 
 .disclaimer {
     margin-top: 25px;
+
+    padding: 15px;
+
+    background: #f5f0e8;
+
+    border-radius: 12px;
+
     font-size: 12px;
-    line-height: 1.5;
-    color: #7b8581;
+    line-height: 1.55;
+
+    color: #6e7874;
 }
 
-.empty-result {
-    text-align: center;
-    padding: 70px 20px;
-    color: var(--muted);
-}
 
-#result {
-    display: none;
-}
+/* =========================
+   FOOTER
+========================= */
 
 footer {
     text-align: center;
+
     margin-top: 22px;
+
     font-size: 12px;
+
     color: #7d8682;
 }
+
+
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width: 760px) {
 
@@ -310,6 +494,10 @@ footer {
         padding: 30px 24px;
     }
 
+    .hero h1 {
+        letter-spacing: -2px;
+    }
+
     .location-row {
         flex-direction: column;
     }
@@ -317,19 +505,36 @@ footer {
     .location-row button {
         width: 100%;
     }
+
 }
 
 </style>
 </head>
 
+
 <body>
 
 <div class="wrapper">
 
+
+    <!-- =========================
+         BRAND
+    ========================== -->
+
     <div class="brand">
-        <div class="logo">♞</div>
+
+        <div class="logo">
+            ♞
+        </div>
+
         Horse Rug Advisor
+
     </div>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
 
     <section class="hero">
 
@@ -343,13 +548,15 @@ footer {
 
         <p>
             Personalised rugging guidance using your horse's
-            characteristics and your local weather forecast.
+            natural insulation, clipping and local weather conditions.
         </p>
 
     </section>
 
 
-    <!-- LOCATION -->
+    <!-- =========================
+         LOCATION
+    ========================== -->
 
     <section class="location-box">
 
@@ -363,26 +570,37 @@ footer {
                 type="text"
                 id="locationInput"
                 placeholder="Enter town or UK postcode"
-                value="Liskeard"
             >
 
-            <button id="weatherButton" onclick="fetchWeather()">
+            <button
+                id="weatherButton"
+                onclick="fetchWeather()"
+            >
                 Check weather →
             </button>
 
         </div>
 
-        <div class="status" id="weatherStatus">
+        <div
+            class="status"
+            id="weatherStatus"
+        >
             Enter your location to retrieve live weather.
         </div>
 
     </section>
 
 
+    <!-- =========================
+         MAIN GRID
+    ========================== -->
+
     <div class="grid">
 
 
-        <!-- HORSE DETAILS -->
+        <!-- =========================
+             HORSE DETAILS
+        ========================== -->
 
         <section class="card">
 
@@ -397,107 +615,176 @@ footer {
 
             <div class="fields">
 
+
+                <!-- NATURAL COAT -->
+
                 <div>
-                    <label>Horse type / breed</label>
 
-                    <select id="breed">
+                    <label>
+                        Natural coat / type
+                    </label>
 
-                        <option value="0">
-                            Warmblood / general horse
-                        </option>
+                    <select id="coat">
 
                         <option value="1">
-                            Thoroughbred / fine type
+                            Fine / thin-coated
+                        </option>
+
+                        <option
+                            value="0"
+                            selected
+                        >
+                            Average coat
                         </option>
 
                         <option value="-1">
-                            Cob / hardy type
+                            Hardy / thick-coated
                         </option>
 
                         <option value="-2">
-                            Native pony
+                            Native / very thick winter coat
                         </option>
 
                     </select>
+
                 </div>
 
 
+                <!-- CLIP -->
+
                 <div>
-                    <label>Clip</label>
+
+                    <label>
+                        Clip
+                    </label>
 
                     <select id="clip">
 
-                        <option value="0">Not clipped</option>
-                        <option value="1">Trace / partial clip</option>
-                        <option value="2">Blanket / hunter clip</option>
-                        <option value="3">Fully clipped</option>
+                        <option value="0">
+                            Not clipped
+                        </option>
+
+                        <option value="1">
+                            Trace / partial clip
+                        </option>
+
+                        <option value="2">
+                            Blanket / hunter clip
+                        </option>
+
+                        <option value="3">
+                            Fully clipped
+                        </option>
 
                     </select>
+
                 </div>
 
 
-                <div>
-                    <label>Living situation</label>
-
-                    <select id="living">
-
-                        <option value="1">Turned out</option>
-                        <option value="0">Mixed stable / turnout</option>
-                        <option value="-1">Mostly stabled</option>
-
-                    </select>
-                </div>
-
+                <!-- CONDITION -->
 
                 <div>
-                    <label>Body condition</label>
+
+                    <label>
+                        Body condition
+                    </label>
 
                     <select id="condition">
 
-                        <option value="1">Lean / feels the cold</option>
-                        <option value="0" selected>Normal</option>
-                        <option value="-1">Good-doer</option>
+                        <option value="1">
+                            Lean / feels the cold
+                        </option>
+
+                        <option
+                            value="0"
+                            selected
+                        >
+                            Normal
+                        </option>
+
+                        <option value="-1">
+                            Good-doer / carries condition
+                        </option>
 
                     </select>
+
                 </div>
 
 
+                <!-- AGE -->
+
                 <div>
-                    <label>Age</label>
+
+                    <label>
+                        Age
+                    </label>
 
                     <select id="age">
 
-                        <option value="0">Adult</option>
-                        <option value="1">Senior</option>
-                        <option value="0">Young horse</option>
+                        <option
+                            value="0"
+                            selected
+                        >
+                            Adult
+                        </option>
+
+                        <option value="1">
+                            Senior
+                        </option>
+
+                        <option value="0">
+                            Young horse
+                        </option>
 
                     </select>
+
                 </div>
 
 
+                <!-- SHELTER -->
+
                 <div>
-                    <label>Shelter available?</label>
+
+                    <label>
+                        Field shelter available?
+                    </label>
 
                     <select id="shelter">
 
-                        <option value="0">Yes</option>
-                        <option value="1">No / exposed</option>
+                        <option
+                            value="0"
+                            selected
+                        >
+                            Yes
+                        </option>
+
+                        <option value="1">
+                            No / very exposed
+                        </option>
 
                     </select>
+
                 </div>
 
             </div>
 
 
-            <!-- WEATHER -->
+            <!-- =========================
+                 WEATHER
+            ========================== -->
 
             <div class="weather-box">
 
                 <div class="weather-heading">
 
-                    <h3>☁ Weather conditions</h3>
+                    <h3>
+                        ☁ Weather conditions
+                    </h3>
 
-                    <span class="badge" id="weatherBadge">
+                    <span
+                        class="badge"
+                        id="weatherBadge"
+                    >
                         Manual
                     </span>
 
@@ -506,31 +793,74 @@ footer {
 
                 <div class="weather-grid">
 
-                    <div>
-                        <label>Current temperature °C</label>
-                        <input id="temperature" type="number" value="7">
-                    </div>
 
                     <div>
-                        <label>Next 24h minimum °C</label>
-                        <input id="overnightLow" type="number" value="3">
+
+                        <label>
+                            Current temperature °C
+                        </label>
+
+                        <input
+                            id="temperature"
+                            type="number"
+                            value="7"
+                        >
+
                     </div>
 
-                    <div>
-                        <label>Wind mph</label>
-                        <input id="wind" type="number" value="18">
-                    </div>
 
                     <div>
-                        <label>Rain forecast</label>
+
+                        <label>
+                            Next 24h minimum °C
+                        </label>
+
+                        <input
+                            id="overnightLow"
+                            type="number"
+                            value="3"
+                        >
+
+                    </div>
+
+
+                    <div>
+
+                        <label>
+                            Wind mph
+                        </label>
+
+                        <input
+                            id="wind"
+                            type="number"
+                            value="18"
+                        >
+
+                    </div>
+
+
+                    <div>
+
+                        <label>
+                            Rain forecast
+                        </label>
 
                         <select id="rain">
 
-                            <option value="0">Dry</option>
-                            <option value="1">Light rain</option>
-                            <option value="2">Heavy rain</option>
+                            <option value="0">
+                                Dry
+                            </option>
+
+                            <option value="1">
+                                Light rain
+                            </option>
+
+                            <option value="2">
+                                Heavy / persistent rain
+                            </option>
 
                         </select>
+
                     </div>
 
                 </div>
@@ -545,24 +875,36 @@ footer {
         </section>
 
 
-        <!-- RECOMMENDATIONS -->
+        <!-- =========================
+             RESULTS
+        ========================== -->
 
         <section class="card">
 
-            <div id="emptyResult" class="empty-result">
 
-                <div style="font-size:65px">♞</div>
+            <div
+                id="emptyResult"
+                class="empty-result"
+            >
 
-                <h2>Ready when you are.</h2>
+                <div class="horse-icon">
+                    ♞
+                </div>
+
+                <h2>
+                    Ready when you are.
+                </h2>
 
                 <p>
-                    Enter your horse details and check the weather.
+                    Tell us about your horse and check the weather
+                    to see a recommendation.
                 </p>
 
             </div>
 
 
             <div id="result">
+
 
                 <div class="eyebrow">
                     02 · Your recommendations
@@ -578,15 +920,21 @@ footer {
                 <div class="recommendation">
 
                     <small>
-                        🌳 Turnout rug
+                        🌳 Turnout
                     </small>
 
-                    <div class="rug-weight" id="turnoutWeight">
-                        200g
+                    <div
+                        class="rug-weight"
+                        id="turnoutWeight"
+                    >
+                        No rug
                     </div>
 
-                    <div class="rug-type" id="turnoutType">
-                        Mediumweight waterproof turnout
+                    <div
+                        class="rug-type"
+                        id="turnoutType"
+                    >
+                        Natural coat may provide sufficient protection
                     </div>
 
                 </div>
@@ -597,15 +945,21 @@ footer {
                 <div class="recommendation stable">
 
                     <small>
-                        🏠 Stable rug
+                        🏠 Stable
                     </small>
 
-                    <div class="rug-weight" id="stableWeight">
-                        100g
+                    <div
+                        class="rug-weight"
+                        id="stableWeight"
+                    >
+                        No rug
                     </div>
 
-                    <div class="rug-type" id="stableType">
-                        Lightweight stable rug
+                    <div
+                        class="rug-type"
+                        id="stableType"
+                    >
+                        Natural coat may provide sufficient protection
                     </div>
 
                 </div>
@@ -615,26 +969,56 @@ footer {
 
                 <div class="stats">
 
+
                     <div class="stat">
+
                         🌡️
-                        <b id="showTemperature">7°C</b>
-                        <small>Now</small>
+
+                        <b id="showTemperature">
+                            -
+                        </b>
+
+                        <small>
+                            Now
+                        </small>
+
                     </div>
 
+
                     <div class="stat">
+
                         🌙
-                        <b id="showLow">3°C</b>
-                        <small>24h low</small>
+
+                        <b id="showLow">
+                            -
+                        </b>
+
+                        <small>
+                            24h low
+                        </small>
+
                     </div>
 
+
                     <div class="stat">
+
                         💨
-                        <b id="showWind">18 mph</b>
-                        <small>Wind</small>
+
+                        <b id="showWind">
+                            -
+                        </b>
+
+                        <small>
+                            Wind
+                        </small>
+
                     </div>
+
 
                 </div>
 
+
+                <!-- EXPLANATION -->
 
                 <div class="reason">
 
@@ -647,23 +1031,25 @@ footer {
                 </div>
 
 
+                <!-- DISCLAIMER -->
+
                 <div class="disclaimer">
 
-                    <strong>Important:</strong>
+                    <strong>
+                        Important:
+                    </strong>
 
-                    These are experimental starting points, not
-                    validated veterinary recommendations.
+                    This tool provides general guidance only and
+                    should not be treated as a veterinary prescription.
 
-                    Check your horse regularly for signs of
-                    overheating, sweating, shivering or discomfort.
+                    Individual horses vary considerably.
 
-                    Rugging requirements depend on individual
-                    health, coat, acclimatisation, shelter and
-                    actual stable conditions.
+                    Check your horse regularly for warmth, sweating,
+                    shivering and general comfort, and adjust their
+                    rug accordingly.
 
-                    The stable recommendation assumes a sheltered,
-                    dry environment. It does not measure the
-                    temperature inside your stable.
+                    The stable recommendation assumes a dry,
+                    sheltered environment.
 
                 </div>
 
@@ -675,7 +1061,7 @@ footer {
 
 
     <footer>
-        Horse Rug Advisor V2 · Weather powered by Open-Meteo
+        Horse Rug Advisor · V3 · Weather powered by Open-Meteo
     </footer>
 
 </div>
@@ -683,20 +1069,22 @@ footer {
 
 <script>
 
+
 /*
-========================================
+==========================================================
 GLOBAL WEATHER STATE
-========================================
+==========================================================
 */
 
 let liveWeatherLoaded = false;
+
 let weatherRequestId = 0;
 
 
 /*
-========================================
+==========================================================
 HELPERS
-========================================
+==========================================================
 */
 
 function getNumber(id) {
@@ -710,315 +1098,553 @@ function getNumber(id) {
 
 function setText(id, value) {
 
-    document.getElementById(id).textContent = value;
-
-}
-
-
-function getRug(score, stable = false) {
-
-    let weight;
-    let type;
-
-    if (score <= 1) {
-
-        weight = "No rug";
-        type = "Natural coat may be sufficient";
-
-    }
-    else if (score <= 3) {
-
-        weight = "0–50g";
-
-        type = stable
-            ? "Lightweight stable rug"
-            : "Waterproof rain sheet / lightweight turnout";
-
-    }
-    else if (score <= 5) {
-
-        weight = "100g";
-
-        type = stable
-            ? "Lightweight stable rug"
-            : "Lightweight waterproof turnout";
-
-    }
-    else if (score <= 7) {
-
-        weight = "150–200g";
-
-        type = stable
-            ? "Mediumweight stable rug"
-            : "Mediumweight waterproof turnout";
-
-    }
-    else if (score <= 9) {
-
-        weight = "250g";
-
-        type = stable
-            ? "Medium / heavyweight stable rug"
-            : "Medium / heavyweight waterproof turnout";
-
-    }
-    else {
-
-        weight = "300g+";
-
-        type = stable
-            ? "Heavyweight stable rug — monitor closely"
-            : "Heavyweight waterproof turnout — monitor closely";
-
-    }
-
-    return { weight, type };
+    document.getElementById(id).textContent =
+        value;
 
 }
 
 
 /*
-========================================
+==========================================================
+RUG CATEGORY
+==========================================================
+
+These are broad product categories.
+
+They should NOT be interpreted as scientifically
+validated temperature-to-fill prescriptions.
+
+==========================================================
+*/
+
+function getRug(protectionLevel, stable = false) {
+
+
+    if (protectionLevel === "none") {
+
+        return {
+
+            weight: "No rug",
+
+            type:
+                "Natural coat may provide sufficient protection"
+
+        };
+
+    }
+
+
+    if (protectionLevel === "weatherproof") {
+
+        return {
+
+            weight: "0g",
+
+            type: stable
+                ? "No additional insulation suggested"
+                : "Waterproof rain sheet"
+
+        };
+
+    }
+
+
+    if (protectionLevel === "light") {
+
+        return {
+
+            weight: "Up to 100g",
+
+            type: stable
+                ? "Lightweight stable rug"
+                : "Lightweight waterproof turnout"
+
+        };
+
+    }
+
+
+    if (protectionLevel === "medium") {
+
+        return {
+
+            weight: "150–300g",
+
+            type: stable
+                ? "Mediumweight stable rug"
+                : "Mediumweight waterproof turnout"
+
+        };
+
+    }
+
+
+    return {
+
+        weight: "350g+",
+
+        type: stable
+            ? "Heavyweight stable rug — monitor closely"
+            : "Heavyweight waterproof turnout — monitor closely"
+
+    };
+
+}
+
+
+/*
+==========================================================
 FETCH LIVE WEATHER
-========================================
+==========================================================
 */
 
 async function fetchWeather() {
 
-    const location = document
-        .getElementById("locationInput")
-        .value.trim();
 
-    const status = document.getElementById("weatherStatus");
-    const button = document.getElementById("weatherButton");
+    const location =
+        document
+            .getElementById("locationInput")
+            .value
+            .trim();
+
+
+    const status =
+        document.getElementById(
+            "weatherStatus"
+        );
+
+
+    const button =
+        document.getElementById(
+            "weatherButton"
+        );
+
 
     if (!location) {
 
-        status.textContent = "Please enter a town or postcode.";
+        status.textContent =
+            "Please enter a town or postcode.";
+
         return;
 
     }
 
-    const requestId = ++weatherRequestId;
+
+    const requestId =
+        ++weatherRequestId;
+
 
     button.disabled = true;
-    button.textContent = "Loading...";
 
-    status.textContent = "Finding your location...";
+    button.textContent =
+        "Loading...";
+
+
+    status.textContent =
+        "Finding your location...";
+
 
     try {
 
+
         /*
-        STEP 1
-        Convert town/postcode into coordinates.
+        --------------------------------------------------
+        FIND LOCATION
+        --------------------------------------------------
         */
 
+
         const geoURL =
+
             "https://geocoding-api.open-meteo.com/v1/search"
-            + "?name=" + encodeURIComponent(location)
+
+            + "?name="
+            + encodeURIComponent(location)
+
             + "&count=5"
+
             + "&language=en"
+
             + "&format=json"
+
             + "&countryCode=GB";
 
-        const geoResponse = await fetch(geoURL);
+
+        const geoResponse =
+            await fetch(geoURL);
+
 
         if (!geoResponse.ok) {
-            throw new Error("Location service unavailable.");
-        }
-
-        const geoData = await geoResponse.json();
-
-        if (!geoData.results || geoData.results.length === 0) {
 
             throw new Error(
-                "Location not found. Try a nearby town instead."
+                "Location service unavailable."
             );
 
         }
 
-        const place = geoData.results[0];
 
-        const latitude = place.latitude;
-        const longitude = place.longitude;
-
-        status.textContent =
-            "Location found: " + place.name + ". Loading forecast...";
+        const geoData =
+            await geoResponse.json();
 
 
-        /*
-        STEP 2
-        Retrieve weather.
+        if (
+            !geoData.results ||
+            geoData.results.length === 0
+        ) {
 
-        Current conditions plus hourly forecast.
-        */
+            throw new Error(
+                "Location not found. Try a nearby town."
+            );
 
-        const weatherURL =
-            "https://api.open-meteo.com/v1/forecast"
-            + "?latitude=" + latitude
-            + "&longitude=" + longitude
-            + "&current=temperature_2m,wind_speed_10m"
-            + "&hourly=temperature_2m,precipitation"
-            + "&wind_speed_unit=mph"
-            + "&timezone=auto"
-            + "&forecast_days=2";
-
-        const weatherResponse = await fetch(weatherURL);
-
-        if (!weatherResponse.ok) {
-            throw new Error("Weather service unavailable.");
         }
 
-        const weatherData = await weatherResponse.json();
 
-        if (requestId !== weatherRequestId) return;
+        const place =
+            geoData.results[0];
+
+
+        const latitude =
+            place.latitude;
+
+
+        const longitude =
+            place.longitude;
+
+
+        status.textContent =
+
+            "Location found: "
+
+            + place.name
+
+            + ". Loading forecast...";
+
 
         /*
-        STEP 3
-        Extract current weather.
+        --------------------------------------------------
+        FETCH WEATHER
+        --------------------------------------------------
         */
+
+
+        const weatherURL =
+
+            "https://api.open-meteo.com/v1/forecast"
+
+            + "?latitude="
+            + latitude
+
+            + "&longitude="
+            + longitude
+
+            + "&current=temperature_2m,wind_speed_10m"
+
+            + "&hourly=temperature_2m,precipitation"
+
+            + "&wind_speed_unit=mph"
+
+            + "&timezone=auto"
+
+            + "&forecast_days=2";
+
+
+        const weatherResponse =
+            await fetch(weatherURL);
+
+
+        if (!weatherResponse.ok) {
+
+            throw new Error(
+                "Weather service unavailable."
+            );
+
+        }
+
+
+        const weatherData =
+            await weatherResponse.json();
+
+
+        if (
+            requestId !== weatherRequestId
+        ) {
+
+            return;
+
+        }
+
+
+        /*
+        --------------------------------------------------
+        CURRENT CONDITIONS
+        --------------------------------------------------
+        */
+
 
         const currentTemperature =
             weatherData.current.temperature_2m;
+
 
         const currentWind =
             weatherData.current.wind_speed_10m;
 
 
         /*
-        STEP 4
-        Find next 24 hours.
-
-        Compare forecast timestamps with the
-        API's current local timestamp.
+        --------------------------------------------------
+        NEXT 24 HOURS
+        --------------------------------------------------
         */
 
-        const hourly = weatherData.hourly;
 
-        const currentTime = new Date(
-            weatherData.current.time
-        ).getTime();
+        const hourly =
+            weatherData.hourly;
+
+
+        const currentTime =
+            new Date(
+                weatherData.current.time
+            ).getTime();
+
 
         const endTime =
-            currentTime + (24 * 60 * 60 * 1000);
 
-        let temperatures = [];
+            currentTime
+
+            + (
+                24 *
+                60 *
+                60 *
+                1000
+            );
+
+
+        const temperatures = [];
+
         let totalRain = 0;
 
-        for (let i = 0; i < hourly.time.length; i++) {
 
-            const hourTime = new Date(
-                hourly.time[i]
-            ).getTime();
+        for (
+            let i = 0;
+            i < hourly.time.length;
+            i++
+        ) {
+
+
+            const hourTime =
+                new Date(
+                    hourly.time[i]
+                ).getTime();
+
 
             if (
                 hourTime >= currentTime &&
                 hourTime <= endTime
             ) {
 
+
                 const temperature =
                     hourly.temperature_2m[i];
+
 
                 const precipitation =
                     hourly.precipitation[i];
 
-                if (Number.isFinite(temperature)) {
-                    temperatures.push(temperature);
+
+                if (
+                    Number.isFinite(
+                        temperature
+                    )
+                ) {
+
+                    temperatures.push(
+                        temperature
+                    );
+
                 }
 
-                if (Number.isFinite(precipitation)) {
-                    totalRain += precipitation;
+
+                if (
+                    Number.isFinite(
+                        precipitation
+                    )
+                ) {
+
+                    totalRain +=
+                        precipitation;
+
                 }
 
             }
 
         }
 
-        if (!temperatures.length) {
-            throw new Error("No hourly forecast available.");
+
+        if (
+            temperatures.length === 0
+        ) {
+
+            throw new Error(
+                "No hourly forecast available."
+            );
+
         }
 
+
         const minimumTemperature =
-            Math.min(...temperatures);
+            Math.min(
+                ...temperatures
+            );
 
 
         /*
-        STEP 5
-        Classify rainfall.
+        --------------------------------------------------
+        CLASSIFY RAIN
+        --------------------------------------------------
         */
+
 
         let rainCategory = 0;
 
+
         if (totalRain >= 0.5) {
+
             rainCategory = 1;
+
         }
 
+
         if (totalRain >= 5) {
+
             rainCategory = 2;
+
         }
 
 
         /*
-        STEP 6
-        Update inputs.
+        --------------------------------------------------
+        UPDATE WEATHER INPUTS
+        --------------------------------------------------
         */
 
-        document.getElementById("temperature").value =
-            Math.round(currentTemperature);
 
-        document.getElementById("overnightLow").value =
-            Math.round(minimumTemperature);
+        document.getElementById(
+            "temperature"
+        ).value =
 
-        document.getElementById("wind").value =
-            Math.round(currentWind);
+            Math.round(
+                currentTemperature
+            );
 
-        document.getElementById("rain").value =
+
+        document.getElementById(
+            "overnightLow"
+        ).value =
+
+            Math.round(
+                minimumTemperature
+            );
+
+
+        document.getElementById(
+            "wind"
+        ).value =
+
+            Math.round(
+                currentWind
+            );
+
+
+        document.getElementById(
+            "rain"
+        ).value =
             rainCategory;
 
 
         /*
-        STEP 7
-        Update status.
+        --------------------------------------------------
+        STATUS
+        --------------------------------------------------
         */
+
 
         liveWeatherLoaded = true;
 
-        setText("weatherBadge", "Live weather");
+
+        setText(
+            "weatherBadge",
+            "Live weather"
+        );
+
 
         status.textContent =
+
             "✓ Weather updated for "
+
             + place.name
+
             + " · "
-            + Math.round(totalRain * 10) / 10
+
+            + (
+                Math.round(
+                    totalRain * 10
+                ) / 10
+            )
+
             + "mm rain forecast over the next 24 hours.";
 
 
         /*
-        STEP 8
-        Automatically calculate rug.
+        Automatically generate recommendation.
         */
+
 
         calculateRug();
 
     }
+
+
     catch (error) {
 
-        if (requestId !== weatherRequestId) return;
+
+        if (
+            requestId !== weatherRequestId
+        ) {
+
+            return;
+
+        }
+
 
         status.textContent =
             "⚠ " + error.message;
 
-        liveWeatherLoaded = false;
 
-        setText("weatherBadge", "Manual");
+        liveWeatherLoaded =
+            false;
+
+
+        setText(
+            "weatherBadge",
+            "Manual"
+        );
 
     }
+
+
     finally {
 
-        if (requestId === weatherRequestId) {
 
-            button.disabled = false;
-            button.textContent = "Check weather →";
+        if (
+            requestId === weatherRequestId
+        ) {
+
+
+            button.disabled =
+                false;
+
+
+            button.textContent =
+                "Check weather →";
 
         }
 
@@ -1028,112 +1654,695 @@ async function fetchWeather() {
 
 
 /*
-========================================
+==========================================================
 CALCULATE RUG
-========================================
+==========================================================
 */
 
 function calculateRug() {
 
-    const temperature = getNumber("temperature");
-    const overnightLow = getNumber("overnightLow");
-    const wind = getNumber("wind");
-    const rain = getNumber("rain");
-
-    const breed = getNumber("breed");
-    const clip = getNumber("clip");
-    const condition = getNumber("condition");
-    const age = getNumber("age");
-    const shelter = getNumber("shelter");
-
 
     /*
-    Shared horse factors.
+    --------------------------------------------------
+    READ WEATHER
+    --------------------------------------------------
     */
 
-    const horseScore =
-        breed +
-        clip +
-        condition +
-        age;
 
-
-    /*
-    Temperature exposure.
-
-    Uses the next 24-hour minimum as
-    a conservative starting point.
-    */
-
-    const effectiveTemperature =
-        Math.min(
-            temperature,
-            overnightLow + 2
+    const temperature =
+        getNumber(
+            "temperature"
         );
 
 
-    let temperatureScore = 0;
-
-    if (effectiveTemperature <= 12) temperatureScore++;
-    if (effectiveTemperature <= 8) temperatureScore++;
-    if (effectiveTemperature <= 4) temperatureScore++;
-    if (effectiveTemperature <= 0) temperatureScore++;
-    if (effectiveTemperature <= -5) temperatureScore++;
+    const overnightLow =
+        getNumber(
+            "overnightLow"
+        );
 
 
-    /*
-    TURNOUT SCORE
+    const wind =
+        getNumber(
+            "wind"
+        );
 
-    Rain, wind and exposure matter.
-    */
 
-    let turnoutScore =
-        temperatureScore +
-        horseScore +
-        shelter +
-        1;
-
-    if (wind >= 15) turnoutScore++;
-    if (wind >= 30) turnoutScore++;
-
-    turnoutScore += rain;
-
-    turnoutScore = Math.max(0, turnoutScore);
+    const rain =
+        getNumber(
+            "rain"
+        );
 
 
     /*
-    STABLE SCORE
-
-    Rain and wind are excluded.
-
-    Assumes a dry, sheltered stable.
+    --------------------------------------------------
+    READ HORSE
+    --------------------------------------------------
     */
 
-    let stableScore =
-        temperatureScore +
-        horseScore -
-        1;
 
-    stableScore = Math.max(0, stableScore);
+    const coat =
+        getNumber(
+            "coat"
+        );
+
+
+    const clip =
+        getNumber(
+            "clip"
+        );
+
+
+    const condition =
+        getNumber(
+            "condition"
+        );
+
+
+    const age =
+        getNumber(
+            "age"
+        );
+
+
+    const shelter =
+        getNumber(
+            "shelter"
+        );
 
 
     /*
-    Convert scores to rug weights.
+    ==================================================
+    1. HORSE VULNERABILITY
+    ==================================================
     */
 
-    const turnout = getRug(turnoutScore, false);
-    const stable = getRug(stableScore, true);
+
+    let vulnerability = 0;
+
+
+    const horseReasons = [];
 
 
     /*
-    Update recommendation UI.
+    CLIPPING
     */
 
-    setText("turnoutWeight", turnout.weight);
-    setText("turnoutType", turnout.type);
 
-    setText("stableWeight", stable.weight);
-    setText("stableType", stable.type);
+    if (clip === 1) {
+
+
+        vulnerability += 1;
+
+
+        horseReasons.push(
+            "a partial clip reduces some natural insulation"
+        );
+
+    }
+
+
+    else if (clip === 2) {
+
+
+        vulnerability += 2;
+
+
+        horseReasons.push(
+            "a substantial clip reduces natural insulation"
+        );
+
+    }
+
+
+    else if (clip >= 3) {
+
+
+        vulnerability += 3;
+
+
+        horseReasons.push(
+            "a full clip substantially reduces natural insulation"
+        );
+
+    }
+
+
+    else {
+
+
+        horseReasons.push(
+            "the natural coat provides useful insulation"
+        );
+
+    }
+
+
+    /*
+    BODY CONDITION
+    */
+
+
+    if (condition > 0) {
+
+
+        vulnerability += 2;
+
+
+        horseReasons.push(
+            "lean body condition may increase sensitivity to cold"
+        );
+
+    }
+
+
+    else if (condition < 0) {
+
+
+        vulnerability -= 1;
+
+
+        horseReasons.push(
+            "good body condition may provide additional natural insulation"
+        );
+
+    }
+
+
+    /*
+    NATURAL COAT / TYPE
+    */
+
+
+    if (coat === 1) {
+
+
+        vulnerability += 1;
+
+
+        horseReasons.push(
+            "a finer natural coat may provide less insulation"
+        );
+
+    }
+
+
+    else if (coat === -1) {
+
+
+        vulnerability -= 1;
+
+
+        horseReasons.push(
+            "a thick natural coat may improve cold tolerance"
+        );
+
+    }
+
+
+    else if (coat <= -2) {
+
+
+        vulnerability -= 2;
+
+
+        horseReasons.push(
+            "a very thick winter coat provides substantial natural insulation"
+        );
+
+    }
+
+
+    /*
+    AGE
+
+    Small modifier only.
+    */
+
+
+    if (age > 0) {
+
+
+        vulnerability += 1;
+
+
+        horseReasons.push(
+            "older horses can have more individual variation in cold tolerance"
+        );
+
+    }
+
+
+    /*
+    Don't allow natural protection to reduce
+    vulnerability indefinitely.
+    */
+
+
+    vulnerability =
+        Math.max(
+            -2,
+            vulnerability
+        );
+
+
+    /*
+    ==================================================
+    2. TEMPERATURE EXPOSURE
+    ==================================================
+    */
+
+
+    const effectiveTemperature =
+
+        Math.min(
+            temperature,
+            overnightLow
+        );
+
+
+    let coldExposure = 0;
+
+
+    if (
+        effectiveTemperature < 5
+    ) {
+
+        coldExposure = 1;
+
+    }
+
+
+    if (
+        effectiveTemperature <= 0
+    ) {
+
+        coldExposure = 2;
+
+    }
+
+
+    if (
+        effectiveTemperature <= -5
+    ) {
+
+        coldExposure = 3;
+
+    }
+
+
+    /*
+    ==================================================
+    3. WEATHER EXPOSURE
+    ==================================================
+    */
+
+
+    let weatherExposure = 0;
+
+
+    const weatherReasons = [];
+
+
+    /*
+    RAIN
+    */
+
+
+    if (rain === 1) {
+
+
+        weatherExposure += 1;
+
+
+        weatherReasons.push(
+            "rain is forecast"
+        );
+
+    }
+
+
+    else if (rain >= 2) {
+
+
+        weatherExposure += 2;
+
+
+        weatherReasons.push(
+            "persistent or heavy rain is forecast"
+        );
+
+    }
+
+
+    /*
+    WIND
+    */
+
+
+    if (wind >= 15) {
+
+
+        weatherExposure += 1;
+
+
+        weatherReasons.push(
+            "wind increases outdoor exposure"
+        );
+
+    }
+
+
+    if (wind >= 30) {
+
+
+        weatherExposure += 1;
+
+
+        weatherReasons.push(
+            "strong winds significantly increase exposure"
+        );
+
+    }
+
+
+    /*
+    SHELTER
+    */
+
+
+    if (shelter > 0) {
+
+
+        weatherExposure += 1;
+
+
+        weatherReasons.push(
+            "limited field shelter increases exposure"
+        );
+
+    }
+
+
+    else {
+
+
+        weatherReasons.push(
+            "field shelter is available"
+        );
+
+    }
+
+
+    /*
+    ==================================================
+    4. TURNOUT PROTECTION
+    ==================================================
+    */
+
+
+    const turnoutExposure =
+
+        coldExposure
+
+        + weatherExposure
+
+        + vulnerability;
+
+
+    let turnoutLevel;
+
+
+    /*
+    Low exposure + wet weather:
+
+    Consider waterproofing rather than
+    automatically adding insulation.
+    */
+
+
+    if (
+        turnoutExposure <= 0
+    ) {
+
+
+        turnoutLevel =
+            "none";
+
+    }
+
+
+    else if (
+        turnoutExposure <= 2 &&
+        rain > 0
+    ) {
+
+
+        turnoutLevel =
+            "weatherproof";
+
+    }
+
+
+    else if (
+        turnoutExposure <= 2
+    ) {
+
+
+        turnoutLevel =
+            "none";
+
+    }
+
+
+    else if (
+        turnoutExposure <= 4
+    ) {
+
+
+        turnoutLevel =
+            "light";
+
+    }
+
+
+    else if (
+        turnoutExposure <= 7
+    ) {
+
+
+        turnoutLevel =
+            "medium";
+
+    }
+
+
+    else {
+
+
+        turnoutLevel =
+            "heavy";
+
+    }
+
+
+    /*
+    ==================================================
+    5. OVERHEATING SAFEGUARDS
+    ==================================================
+    */
+
+
+    /*
+    At warmer temperatures don't allow
+    the score system to blindly produce
+    heavyweight recommendations.
+    */
+
+
+    if (
+        temperature >= 15
+    ) {
+
+
+        if (
+            turnoutLevel === "medium" ||
+            turnoutLevel === "heavy"
+        ) {
+
+
+            turnoutLevel =
+                "light";
+
+        }
+
+    }
+
+
+    /*
+    Warm + dry conditions.
+
+    Avoid unnecessary rugging.
+    */
+
+
+    if (
+        temperature >= 18 &&
+        rain === 0
+    ) {
+
+
+        turnoutLevel =
+            "none";
+
+    }
+
+
+    /*
+    ==================================================
+    6. STABLE PROTECTION
+    ==================================================
+
+    Rain, outdoor wind and field exposure
+    are intentionally excluded.
+
+    Assumption:
+    stable is dry and sheltered.
+
+    ==================================================
+    */
+
+
+    const stableExposure =
+
+        coldExposure
+
+        + vulnerability;
+
+
+    let stableLevel;
+
+
+    if (
+        stableExposure <= 1
+    ) {
+
+
+        stableLevel =
+            "none";
+
+    }
+
+
+    else if (
+        stableExposure <= 3
+    ) {
+
+
+        stableLevel =
+            "light";
+
+    }
+
+
+    else if (
+        stableExposure <= 5
+    ) {
+
+
+        stableLevel =
+            "medium";
+
+    }
+
+
+    else {
+
+
+        stableLevel =
+            "heavy";
+
+    }
+
+
+    /*
+    Stable overheating safeguard.
+    */
+
+
+    if (
+        temperature >= 15
+    ) {
+
+
+        if (
+            stableLevel === "medium" ||
+            stableLevel === "heavy"
+        ) {
+
+
+            stableLevel =
+                "light";
+
+        }
+
+    }
+
+
+    /*
+    ==================================================
+    7. CONVERT LEVELS TO RUG CATEGORIES
+    ==================================================
+    */
+
+
+    const turnout =
+        getRug(
+            turnoutLevel,
+            false
+        );
+
+
+    const stable =
+        getRug(
+            stableLevel,
+            true
+        );
+
+
+    /*
+    ==================================================
+    8. UPDATE RESULT
+    ==================================================
+    */
+
+
+    setText(
+        "turnoutWeight",
+        turnout.weight
+    );
+
+
+    setText(
+        "turnoutType",
+        turnout.type
+    );
+
+
+    setText(
+        "stableWeight",
+        stable.weight
+    );
+
+
+    setText(
+        "stableType",
+        stable.type
+    );
+
+
+    /*
+    WEATHER SUMMARY
+    */
 
 
     setText(
@@ -1141,10 +2350,12 @@ function calculateRug() {
         temperature + "°C"
     );
 
+
     setText(
         "showLow",
         overnightLow + "°C"
     );
+
 
     setText(
         "showWind",
@@ -1153,142 +2364,211 @@ function calculateRug() {
 
 
     /*
-    Build explanation.
+    ==================================================
+    9. BUILD EXPLANATION
+    ==================================================
     */
 
-    let reasons = [];
 
-    reasons.push(
-        "the next 24-hour minimum is "
-        + overnightLow + "°C"
-    );
+    const reasons = [];
 
-    if (clip > 0) {
+
+    if (
+        effectiveTemperature < 5
+    ) {
+
 
         reasons.push(
-            "your horse is clipped"
+
+            "temperatures fall to "
+
+            + effectiveTemperature
+
+            + "°C"
+
         );
 
     }
+
+
     else {
 
+
         reasons.push(
-            "your horse has its natural coat"
+
+            "temperatures remain around "
+
+            + effectiveTemperature
+
+            + "°C or above"
+
         );
 
     }
 
-    if (wind >= 15) {
 
-        reasons.push(
-            "wind increases outdoor exposure"
-        );
+    reasons.push(
+        ...horseReasons
+    );
 
-    }
 
-    if (rain > 0) {
+    reasons.push(
+        ...weatherReasons
+    );
 
-        reasons.push(
-            "rain is forecast"
-        );
-
-    }
-
-    if (shelter > 0) {
-
-        reasons.push(
-            "outdoor shelter is limited"
-        );
-
-    }
 
     const explanation =
-        "These suggestions take into account "
+
+        "The turnout suggestion considers that "
+
         + reasons.join(", ")
-        + ". The turnout estimate includes weather exposure, "
-        + "while the stable estimate assumes a dry, sheltered environment. "
-        + "Both should be adjusted to your horse's individual needs.";
+
+        + ". The stable suggestion removes rain and outdoor wind exposure "
+
+        + "and assumes a dry, sheltered stable. "
+
+        + "These are starting points rather than fixed rules, "
+
+        + "so check your horse's temperature and comfort regularly.";
 
 
-    setText("reasonText", explanation);
+    setText(
+        "reasonText",
+        explanation
+    );
 
 
     /*
-    Display result.
+    ==================================================
+    10. SHOW RESULTS
+    ==================================================
     */
 
-    document.getElementById("emptyResult").style.display =
+
+    document.getElementById(
+        "emptyResult"
+    ).style.display =
         "none";
 
-    document.getElementById("result").style.display =
+
+    document.getElementById(
+        "result"
+    ).style.display =
         "block";
 
 }
 
 
 /*
-========================================
-EVENT LISTENERS
-========================================
+==========================================================
+HORSE INPUT LISTENERS
+==========================================================
 */
 
 
-/*
-Automatically recalculate when
-horse details change.
-*/
+document
+    .querySelectorAll(
+        ".fields select"
+    )
+    .forEach(
+        element => {
 
-document.querySelectorAll(
-    ".fields select"
-).forEach(element => {
 
-    element.addEventListener("change", () => {
+            element.addEventListener(
+                "change",
+                () => {
 
-        const resultVisible =
-            document.getElementById("result").style.display
-            === "block";
 
-        if (resultVisible) {
-            calculateRug();
+                    const resultVisible =
+
+                        document
+                            .getElementById(
+                                "result"
+                            )
+                            .style
+                            .display
+
+                        === "block";
+
+
+                    if (
+                        resultVisible
+                    ) {
+
+                        calculateRug();
+
+                    }
+
+                }
+            );
+
         }
-
-    });
-
-});
+    );
 
 
 /*
-Allow Enter to search location.
+==========================================================
+LOCATION ENTER KEY
+==========================================================
 */
 
-document.getElementById("locationInput")
-    .addEventListener("keydown", event => {
 
-        if (event.key === "Enter") {
-            fetchWeather();
+document
+    .getElementById(
+        "locationInput"
+    )
+    .addEventListener(
+        "keydown",
+        event => {
+
+
+            if (
+                event.key === "Enter"
+            ) {
+
+                fetchWeather();
+
+            }
+
         }
-
-    });
+    );
 
 
 /*
-When weather is edited manually,
-mark it as manual.
+==========================================================
+MANUAL WEATHER EDIT
+==========================================================
 */
 
-document.querySelectorAll(
-    ".weather-grid input, .weather-grid select"
-).forEach(element => {
 
-    element.addEventListener("input", () => {
+document
+    .querySelectorAll(
+        ".weather-grid input, .weather-grid select"
+    )
+    .forEach(
+        element => {
 
-        liveWeatherLoaded = false;
 
-        setText("weatherBadge", "Manual");
+            element.addEventListener(
+                "input",
+                () => {
 
-    });
 
-});
+                    liveWeatherLoaded =
+                        false;
+
+
+                    setText(
+                        "weatherBadge",
+                        "Manual"
+                    );
+
+                }
+            );
+
+        }
+    );
+
 
 </script>
 
