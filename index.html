@@ -37,10 +37,7 @@ body {
     padding: 28px 18px 50px;
 }
 
-
-/* =========================
-   BRAND
-========================= */
+/* BRAND */
 
 .brand {
     display: flex;
@@ -68,10 +65,7 @@ body {
     font-size: 22px;
 }
 
-
-/* =========================
-   HERO
-========================= */
+/* HERO */
 
 .hero {
     background: var(--green);
@@ -117,10 +111,7 @@ body {
     text-transform: uppercase;
 }
 
-
-/* =========================
-   LAYOUT
-========================= */
+/* LAYOUT */
 
 .grid {
     display: grid;
@@ -146,10 +137,7 @@ h2 {
     font-size: 27px;
 }
 
-
-/* =========================
-   LOCATION
-========================= */
+/* LOCATION */
 
 .location-box {
     background: #e7eee9;
@@ -174,7 +162,6 @@ h2 {
 
 .location-row button {
     width: auto;
-
     white-space: nowrap;
 }
 
@@ -188,10 +175,7 @@ h2 {
     color: var(--muted);
 }
 
-
-/* =========================
-   FORM
-========================= */
+/* FORM */
 
 .fields {
     display: grid;
@@ -234,10 +218,7 @@ input:focus {
     border-color: var(--green-light);
 }
 
-
-/* =========================
-   WEATHER
-========================= */
+/* WEATHER */
 
 .weather-box {
     background: #e7eee9;
@@ -287,10 +268,7 @@ input:focus {
     font-weight: bold;
 }
 
-
-/* =========================
-   BUTTON
-========================= */
+/* BUTTON */
 
 button {
     width: 100%;
@@ -325,10 +303,7 @@ button:disabled {
     cursor: wait;
 }
 
-
-/* =========================
-   EMPTY RESULT
-========================= */
+/* EMPTY RESULT */
 
 .empty-result {
     text-align: center;
@@ -344,10 +319,7 @@ button:disabled {
     margin-bottom: 10px;
 }
 
-
-/* =========================
-   RESULTS
-========================= */
+/* RESULTS */
 
 #result {
     display: none;
@@ -391,10 +363,7 @@ button:disabled {
     line-height: 1.4;
 }
 
-
-/* =========================
-   WEATHER SUMMARY
-========================= */
+/* WEATHER SUMMARY */
 
 .stats {
     display: grid;
@@ -428,10 +397,7 @@ button:disabled {
     color: var(--muted);
 }
 
-
-/* =========================
-   EXPLANATION
-========================= */
+/* EXPLANATION */
 
 .reason {
     border-top: 1px solid var(--line);
@@ -462,10 +428,7 @@ button:disabled {
     color: #6e7874;
 }
 
-
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 
 footer {
     text-align: center;
@@ -477,10 +440,7 @@ footer {
     color: #7d8682;
 }
 
-
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
 @media(max-width: 760px) {
 
@@ -505,7 +465,6 @@ footer {
     .location-row button {
         width: 100%;
     }
-
 }
 
 </style>
@@ -516,10 +475,7 @@ footer {
 
 <div class="wrapper">
 
-
-    <!-- =========================
-         BRAND
-    ========================== -->
+    <!-- BRAND -->
 
     <div class="brand">
 
@@ -532,9 +488,7 @@ footer {
     </div>
 
 
-    <!-- =========================
-         HERO
-    ========================== -->
+    <!-- HERO -->
 
     <section class="hero">
 
@@ -548,15 +502,13 @@ footer {
 
         <p>
             Personalised rugging guidance using your horse's
-            natural insulation, clipping and local weather conditions.
+            breed, natural coat, clipping and local weather conditions.
         </p>
 
     </section>
 
 
-    <!-- =========================
-         LOCATION
-    ========================== -->
+    <!-- LOCATION -->
 
     <section class="location-box">
 
@@ -591,16 +543,10 @@ footer {
     </section>
 
 
-    <!-- =========================
-         MAIN GRID
-    ========================== -->
-
     <div class="grid">
 
 
-        <!-- =========================
-             HORSE DETAILS
-        ========================== -->
+        <!-- HORSE DETAILS -->
 
         <section class="card">
 
@@ -616,18 +562,64 @@ footer {
             <div class="fields">
 
 
-                <!-- NATURAL COAT -->
+                <!-- BREED -->
 
                 <div>
 
                     <label>
-                        Natural coat / type
+                        Breed / type
+                    </label>
+
+                    <select id="breed">
+
+                        <option
+                            value="0"
+                            selected
+                        >
+                            Warmblood / Sport Horse
+                        </option>
+
+                        <option value="1">
+                            Thoroughbred / Fine type
+                        </option>
+
+                        <option value="0">
+                            Arab
+                        </option>
+
+                        <option value="-0.5">
+                            Cob
+                        </option>
+
+                        <option value="-1">
+                            Native pony
+                        </option>
+
+                        <option value="0">
+                            Draft / Heavy horse
+                        </option>
+
+                        <option value="0">
+                            Other / Mixed
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- COAT -->
+
+                <div>
+
+                    <label>
+                        Natural coat
                     </label>
 
                     <select id="coat">
 
                         <option value="1">
-                            Fine / thin-coated
+                            Fine / thin coat
                         </option>
 
                         <option
@@ -638,11 +630,11 @@ footer {
                         </option>
 
                         <option value="-1">
-                            Hardy / thick-coated
+                            Thick coat
                         </option>
 
                         <option value="-2">
-                            Native / very thick winter coat
+                            Very thick / winter coat
                         </option>
 
                     </select>
@@ -669,11 +661,15 @@ footer {
                         </option>
 
                         <option value="2">
-                            Blanket / hunter clip
+                            Blanket clip
+                        </option>
+
+                        <option value="2.5">
+                            Hunter clip
                         </option>
 
                         <option value="3">
-                            Fully clipped
+                            Full clip
                         </option>
 
                     </select>
@@ -721,6 +717,10 @@ footer {
 
                     <select id="age">
 
+                        <option value="0">
+                            Young horse
+                        </option>
+
                         <option
                             value="0"
                             selected
@@ -730,10 +730,6 @@ footer {
 
                         <option value="1">
                             Senior
-                        </option>
-
-                        <option value="0">
-                            Young horse
                         </option>
 
                     </select>
@@ -759,7 +755,7 @@ footer {
                         </option>
 
                         <option value="1">
-                            No / very exposed
+                            Limited / none
                         </option>
 
                     </select>
@@ -769,9 +765,7 @@ footer {
             </div>
 
 
-            <!-- =========================
-                 WEATHER
-            ========================== -->
+            <!-- WEATHER -->
 
             <div class="weather-box">
 
@@ -792,7 +786,6 @@ footer {
 
 
                 <div class="weather-grid">
-
 
                     <div>
 
@@ -875,9 +868,7 @@ footer {
         </section>
 
 
-        <!-- =========================
-             RESULTS
-        ========================== -->
+        <!-- RESULTS -->
 
         <section class="card">
 
@@ -965,10 +956,9 @@ footer {
                 </div>
 
 
-                <!-- WEATHER SUMMARY -->
+                <!-- WEATHER -->
 
                 <div class="stats">
-
 
                     <div class="stat">
 
@@ -1014,11 +1004,10 @@ footer {
 
                     </div>
 
-
                 </div>
 
 
-                <!-- EXPLANATION -->
+                <!-- REASON -->
 
                 <div class="reason">
 
@@ -1045,7 +1034,7 @@ footer {
                     Individual horses vary considerably.
 
                     Check your horse regularly for warmth, sweating,
-                    shivering and general comfort, and adjust their
+                    shivering and general comfort and adjust their
                     rug accordingly.
 
                     The stable recommendation assumes a dry,
@@ -1072,12 +1061,11 @@ footer {
 
 /*
 ==========================================================
-GLOBAL WEATHER STATE
+GLOBAL STATE
 ==========================================================
 */
 
 let liveWeatherLoaded = false;
-
 let weatherRequestId = 0;
 
 
@@ -1107,13 +1095,6 @@ function setText(id, value) {
 /*
 ==========================================================
 RUG CATEGORY
-==========================================================
-
-These are broad product categories.
-
-They should NOT be interpreted as scientifically
-validated temperature-to-fill prescriptions.
-
 ==========================================================
 */
 
@@ -1248,9 +1229,7 @@ async function fetchWeather() {
 
 
         /*
-        --------------------------------------------------
         FIND LOCATION
-        --------------------------------------------------
         */
 
 
@@ -1321,9 +1300,7 @@ async function fetchWeather() {
 
 
         /*
-        --------------------------------------------------
         FETCH WEATHER
-        --------------------------------------------------
         */
 
 
@@ -1375,9 +1352,7 @@ async function fetchWeather() {
 
 
         /*
-        --------------------------------------------------
         CURRENT CONDITIONS
-        --------------------------------------------------
         */
 
 
@@ -1390,9 +1365,7 @@ async function fetchWeather() {
 
 
         /*
-        --------------------------------------------------
         NEXT 24 HOURS
-        --------------------------------------------------
         */
 
 
@@ -1442,7 +1415,7 @@ async function fetchWeather() {
             ) {
 
 
-                const temperature =
+                const temp =
                     hourly.temperature_2m[i];
 
 
@@ -1451,13 +1424,11 @@ async function fetchWeather() {
 
 
                 if (
-                    Number.isFinite(
-                        temperature
-                    )
+                    Number.isFinite(temp)
                 ) {
 
                     temperatures.push(
-                        temperature
+                        temp
                     );
 
                 }
@@ -1497,9 +1468,7 @@ async function fetchWeather() {
 
 
         /*
-        --------------------------------------------------
-        CLASSIFY RAIN
-        --------------------------------------------------
+        RAIN CLASSIFICATION
         */
 
 
@@ -1521,9 +1490,7 @@ async function fetchWeather() {
 
 
         /*
-        --------------------------------------------------
-        UPDATE WEATHER INPUTS
-        --------------------------------------------------
+        UPDATE INPUTS
         */
 
 
@@ -1561,9 +1528,7 @@ async function fetchWeather() {
 
 
         /*
-        --------------------------------------------------
         STATUS
-        --------------------------------------------------
         */
 
 
@@ -1594,7 +1559,7 @@ async function fetchWeather() {
 
 
         /*
-        Automatically generate recommendation.
+        AUTOMATICALLY CALCULATE
         */
 
 
@@ -1655,7 +1620,7 @@ async function fetchWeather() {
 
 /*
 ==========================================================
-CALCULATE RUG
+CALCULATE RECOMMENDATION
 ==========================================================
 */
 
@@ -1663,9 +1628,7 @@ function calculateRug() {
 
 
     /*
-    --------------------------------------------------
-    READ WEATHER
-    --------------------------------------------------
+    WEATHER
     */
 
 
@@ -1694,10 +1657,14 @@ function calculateRug() {
 
 
     /*
-    --------------------------------------------------
-    READ HORSE
-    --------------------------------------------------
+    HORSE
     */
+
+
+    const breed =
+        getNumber(
+            "breed"
+        );
 
 
     const coat =
@@ -1732,7 +1699,7 @@ function calculateRug() {
 
     /*
     ==================================================
-    1. HORSE VULNERABILITY
+    HORSE VULNERABILITY
     ==================================================
     */
 
@@ -1744,7 +1711,105 @@ function calculateRug() {
 
 
     /*
+    BREED / TYPE
+
+    Small modifier only.
+
+    Actual coat and clipping carry
+    greater influence.
+    */
+
+
+    if (breed >= 1) {
+
+
+        vulnerability += 1;
+
+
+        horseReasons.push(
+            "their breed/type tends towards a finer natural coat"
+        );
+
+    }
+
+
+    else if (breed === -0.5) {
+
+
+        vulnerability -= 0.5;
+
+
+        horseReasons.push(
+            "their type may have some natural hardiness"
+        );
+
+    }
+
+
+    else if (breed <= -1) {
+
+
+        vulnerability -= 1;
+
+
+        horseReasons.push(
+            "their native type may have greater natural hardiness"
+        );
+
+    }
+
+
+    /*
+    NATURAL COAT
+
+    Stronger modifier than breed.
+    */
+
+
+    if (coat >= 1) {
+
+
+        vulnerability += 1;
+
+
+        horseReasons.push(
+            "their actual coat is fine or thin"
+        );
+
+    }
+
+
+    else if (coat === -1) {
+
+
+        vulnerability -= 1;
+
+
+        horseReasons.push(
+            "their actual coat is thick"
+        );
+
+    }
+
+
+    else if (coat <= -2) {
+
+
+        vulnerability -= 2;
+
+
+        horseReasons.push(
+            "their actual winter coat is very thick"
+        );
+
+    }
+
+
+    /*
     CLIPPING
+
+    Strong modifier because this directly
+    removes natural insulation.
     */
 
 
@@ -1755,7 +1820,7 @@ function calculateRug() {
 
 
         horseReasons.push(
-            "a partial clip reduces some natural insulation"
+            "a partial clip removes some natural insulation"
         );
 
     }
@@ -1768,7 +1833,20 @@ function calculateRug() {
 
 
         horseReasons.push(
-            "a substantial clip reduces natural insulation"
+            "a blanket clip removes a significant amount of natural insulation"
+        );
+
+    }
+
+
+    else if (clip === 2.5) {
+
+
+        vulnerability += 2.5;
+
+
+        horseReasons.push(
+            "a hunter clip removes most of the natural insulating coat"
         );
 
     }
@@ -1791,7 +1869,7 @@ function calculateRug() {
 
 
         horseReasons.push(
-            "the natural coat provides useful insulation"
+            "the horse is unclipped"
         );
 
     }
@@ -1822,51 +1900,7 @@ function calculateRug() {
 
 
         horseReasons.push(
-            "good body condition may provide additional natural insulation"
-        );
-
-    }
-
-
-    /*
-    NATURAL COAT / TYPE
-    */
-
-
-    if (coat === 1) {
-
-
-        vulnerability += 1;
-
-
-        horseReasons.push(
-            "a finer natural coat may provide less insulation"
-        );
-
-    }
-
-
-    else if (coat === -1) {
-
-
-        vulnerability -= 1;
-
-
-        horseReasons.push(
-            "a thick natural coat may improve cold tolerance"
-        );
-
-    }
-
-
-    else if (coat <= -2) {
-
-
-        vulnerability -= 2;
-
-
-        horseReasons.push(
-            "a very thick winter coat provides substantial natural insulation"
+            "good body condition may provide some additional natural insulation"
         );
 
     }
@@ -1875,26 +1909,29 @@ function calculateRug() {
     /*
     AGE
 
-    Small modifier only.
+    Deliberately small influence.
     */
 
 
     if (age > 0) {
 
 
-        vulnerability += 1;
+        vulnerability += 0.5;
 
 
         horseReasons.push(
-            "older horses can have more individual variation in cold tolerance"
+            "senior horses can have more individual variation in cold tolerance"
         );
 
     }
 
 
     /*
-    Don't allow natural protection to reduce
-    vulnerability indefinitely.
+    Clamp the lower end.
+
+    Hardy breed + thick coat + body
+    condition shouldn't make the horse
+    infinitely resistant to cold.
     */
 
 
@@ -1907,7 +1944,7 @@ function calculateRug() {
 
     /*
     ==================================================
-    2. TEMPERATURE EXPOSURE
+    TEMPERATURE EXPOSURE
     ==================================================
     */
 
@@ -1952,7 +1989,7 @@ function calculateRug() {
 
     /*
     ==================================================
-    3. WEATHER EXPOSURE
+    WEATHER EXPOSURE
     ==================================================
     */
 
@@ -2037,7 +2074,7 @@ function calculateRug() {
 
 
         weatherReasons.push(
-            "limited field shelter increases exposure"
+            "field shelter is limited"
         );
 
     }
@@ -2055,7 +2092,7 @@ function calculateRug() {
 
     /*
     ==================================================
-    4. TURNOUT PROTECTION
+    TURNOUT
     ==================================================
     */
 
@@ -2072,14 +2109,6 @@ function calculateRug() {
     let turnoutLevel;
 
 
-    /*
-    Low exposure + wet weather:
-
-    Consider waterproofing rather than
-    automatically adding insulation.
-    */
-
-
     if (
         turnoutExposure <= 0
     ) {
@@ -2089,6 +2118,14 @@ function calculateRug() {
             "none";
 
     }
+
+
+    /*
+    Low thermal requirement but wet.
+
+    Prioritise keeping dry rather than
+    automatically adding insulation.
+    */
 
 
     else if (
@@ -2147,15 +2184,8 @@ function calculateRug() {
 
     /*
     ==================================================
-    5. OVERHEATING SAFEGUARDS
+    WARM WEATHER SAFEGUARDS
     ==================================================
-    */
-
-
-    /*
-    At warmer temperatures don't allow
-    the score system to blindly produce
-    heavyweight recommendations.
     */
 
 
@@ -2178,13 +2208,6 @@ function calculateRug() {
     }
 
 
-    /*
-    Warm + dry conditions.
-
-    Avoid unnecessary rugging.
-    */
-
-
     if (
         temperature >= 18 &&
         rain === 0
@@ -2199,14 +2222,13 @@ function calculateRug() {
 
     /*
     ==================================================
-    6. STABLE PROTECTION
+    STABLE
     ==================================================
 
-    Rain, outdoor wind and field exposure
-    are intentionally excluded.
+    Rain, field shelter and outdoor wind
+    are excluded.
 
-    Assumption:
-    stable is dry and sheltered.
+    Assumes a dry and sheltered stable.
 
     ==================================================
     */
@@ -2265,7 +2287,7 @@ function calculateRug() {
 
 
     /*
-    Stable overheating safeguard.
+    Stable warm weather safeguard.
     */
 
 
@@ -2288,9 +2310,21 @@ function calculateRug() {
     }
 
 
+    if (
+        temperature >= 18 &&
+        stableExposure <= 3
+    ) {
+
+
+        stableLevel =
+            "none";
+
+    }
+
+
     /*
     ==================================================
-    7. CONVERT LEVELS TO RUG CATEGORIES
+    GET RUGS
     ==================================================
     */
 
@@ -2311,7 +2345,7 @@ function calculateRug() {
 
     /*
     ==================================================
-    8. UPDATE RESULT
+    UPDATE UI
     ==================================================
     */
 
@@ -2340,11 +2374,6 @@ function calculateRug() {
     );
 
 
-    /*
-    WEATHER SUMMARY
-    */
-
-
     setText(
         "showTemperature",
         temperature + "°C"
@@ -2365,7 +2394,7 @@ function calculateRug() {
 
     /*
     ==================================================
-    9. BUILD EXPLANATION
+    EXPLANATION
     ==================================================
     */
 
@@ -2423,7 +2452,13 @@ function calculateRug() {
 
         + reasons.join(", ")
 
-        + ". The stable suggestion removes rain and outdoor wind exposure "
+        + ". Breed/type is treated only as a small modifier, "
+
+        + "while your horse's actual coat, clipping and body condition "
+
+        + "have a greater influence. "
+
+        + "The stable suggestion removes rain and outdoor wind exposure "
 
         + "and assumes a dry, sheltered stable. "
 
@@ -2439,9 +2474,7 @@ function calculateRug() {
 
 
     /*
-    ==================================================
-    10. SHOW RESULTS
-    ==================================================
+    SHOW RESULT
     */
 
 
@@ -2461,7 +2494,7 @@ function calculateRug() {
 
 /*
 ==========================================================
-HORSE INPUT LISTENERS
+AUTO RECALCULATE HORSE DETAILS
 ==========================================================
 */
 
@@ -2508,7 +2541,7 @@ document
 
 /*
 ==========================================================
-LOCATION ENTER KEY
+ENTER KEY LOCATION SEARCH
 ==========================================================
 */
 
