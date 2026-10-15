@@ -550,11 +550,38 @@ footer {
         <div class="mobile-card">
             <label for="mobileHorseName">What's your horse called?</label>
             <input class="mobile-input" id="mobileHorseName" type="text" placeholder="e.g. Bella">
-            <div class="mobile-question">📍 Where are you?</div>
-            <input class="mobile-input" id="mobileLocationInput" type="text" placeholder="Town or UK postcode">
-            <div id="mobileWeatherStatus">We'll use this to check the local forecast.</div>
-        </div>
-        <button onclick="mobileStart()">Get started →</button>
+            <div class="mobile-question">
+    📍 Where are you?
+</div>
+
+<input
+    class="mobile-input"
+    id="mobileLocationInput"
+    type="text"
+    placeholder="Town or UK postcode"
+>
+
+<div id="mobileWeatherStatus">
+    Enter a town or postcode, then confirm it below.
+</div>
+
+<button
+    id="mobileLocationButton"
+    style="margin-top:12px"
+    onclick="mobileConfirmLocation()"
+>
+    Check location →
+</button>
+
+</div>
+
+<button
+    id="mobileStartButton"
+    disabled
+    onclick="mobileStart()"
+>
+    Get started →
+</button>
     </section>
 
     <section class="mobile-screen" data-mobile-step="1">
@@ -603,11 +630,11 @@ footer {
             <button class="choice" data-target="condition" data-value="-1">Good-doer</button>
         </div>
         <div class="mobile-question">Age</div>
-        <div class="choice-grid">
-            <button class="choice" data-target="age" data-value="0">Young</button>
-            <button class="choice" data-target="age" data-value="0">Adult</button>
-            <button class="choice" data-target="age" data-value="1">Senior</button>
-        </div>
+<div class="choice-grid">
+    <button class="choice" data-target="age" data-value="-0.01">Young</button>
+    <button class="choice" data-target="age" data-value="0">Adult</button>
+    <button class="choice" data-target="age" data-value="1">Senior</button>
+</div>
         <div class="mobile-question">Field shelter</div>
         <div class="choice-grid">
             <button class="choice" data-target="shelter" data-value="0">✓ Available</button>
@@ -2796,6 +2823,9 @@ document
 let mobileEnvironment = null;
 let mobileShowingEnvironment = "turnout";
 
+let mobileLocationConfirmed = false;
+let confirmedMobileLocation = null;
+
 const mobileAnswered = {
     breed: false,
     coat: false,
@@ -2830,12 +2860,286 @@ function updateMobileHorseLabels() {
     document.querySelectorAll('.mobileHorseLabel').forEach(el => el.textContent = name);
 }
 
-function mobileStart() {
-    updateMobileHorseLabels();
-    const loc = document.getElementById('mobileLocationInput').value.trim();
-    if (loc) document.getElementById('locationInput').value = loc;
-    showMobileStep(1);
+async function mobileConfirmLocation() {
+
+    const input =
+        document.getElementById(
+            "mobileLocationInput"
+        );
+
+    const status =
+        document.getElementById(
+            "mobileWeatherStatus"
+        );
+
+    const checkButton =
+        document.getElementById(
+            "mobileLocationButton"
+        );
+
+    const startButton =
+        document.getElementById(
+            "mobileStartButton"
+        );
+
+
+    const location =
+        input.value.trim();
+
+
+    /*
+    Reset previous confirmation.
+    */
+
+    mobileLocationConfirmed = false;
+
+    confirmedMobileLocation = null;
+
+    startButton.disabled = true;
+
+
+    if (!location) {
+
+        status.textContent =
+            "⚠ Please enter a town or postcode.";
+
+        return;
+
+    }
+
+
+    /*
+    Loading feedback
+    */
+
+    checkButton.disabled = true;
+
+    checkButton.textContent =
+        "Finding location…";
+
+
+    status.textContent =
+        "Finding " + location + "…";
+
+
+    try {
+
+        const geoURL =
+
+            "https://geocoding-api.open-meteo.com/v1/search"
+
+            + "?name="
+            + encodeURIComponent(location)
+
+            + "&count=5"
+
+            + "&language=en"
+
+            + "&format=json"
+
+            + "&countryCode=GB";
+
+
+        const response =
+            await fetch(geoURL);
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Location service unavailable."
+            );
+
+        }
+
+
+        const data =
+            await response.json();
+
+
+        if (
+            !data.results ||
+            data.results.length === 0
+        ) {
+
+            throw new Error(
+                "We couldn't find that location. Try a nearby town or postcode."
+            );
+
+        }
+
+
+        /*
+        For now use the best matching result.
+
+        We can add a multiple-location chooser
+        later for ambiguous places.
+        */
+
+        const place =
+            data.results[0];
+
+
+        confirmedMobileLocation = {
+
+            name:
+                place.name,
+
+            region:
+                place.admin1 || "",
+
+            country:
+                place.country ||
+                "United Kingdom",
+
+            latitude:
+                place.latitude,
+
+            longitude:
+                place.longitude,
+
+            searchText:
+                location
+
+        };
+
+
+        /*
+        Build friendly location name.
+        */
+
+        const locationParts = [
+
+            confirmedMobileLocation.name,
+
+            confirmedMobileLocation.region,
+
+            confirmedMobileLocation.country
+
+        ].filter(
+            (value, index, array) =>
+
+                value &&
+
+                array.indexOf(value) ===
+                index
+        );
+
+
+        status.textContent =
+
+            "✓ "
+
+            + locationParts.join(", ")
+
+            + " — location confirmed.";
+
+
+        /*
+        Location is now valid.
+        */
+
+        mobileLocationConfirmed =
+            true;
+
+
+        startButton.disabled =
+            false;
+
+
+        /*
+        Keep desktop weather system synced.
+        */
+
+        document
+            .getElementById(
+                "locationInput"
+            )
+            .value =
+                location;
+
+    }
+
+
+    catch (error) {
+
+        status.textContent =
+            "⚠ " + error.message;
+
+    }
+
+
+    finally {
+
+        checkButton.disabled =
+            false;
+
+
+        checkButton.textContent =
+            "Check location →";
+
+    }
+
 }
+
+
+
+function mobileStart() {
+
+    if (!mobileLocationConfirmed) {
+
+        document
+            .getElementById(
+                "mobileWeatherStatus"
+            )
+            .textContent =
+
+            "⚠ Please confirm your location before continuing.";
+
+        return;
+
+    }
+
+
+    updateMobileHorseLabels();
+
+    showMobileStep(1);
+
+}
+
+document
+    .getElementById(
+        "mobileLocationInput"
+    )
+    .addEventListener(
+        "input",
+        () => {
+
+            mobileLocationConfirmed =
+                false;
+
+            confirmedMobileLocation =
+                null;
+
+
+            document
+                .getElementById(
+                    "mobileStartButton"
+                )
+                .disabled =
+                    true;
+
+
+            document
+                .getElementById(
+                    "mobileWeatherStatus"
+                )
+                .textContent =
+
+                "Location changed — press Check location to confirm it.";
+
+        }
+    );
 
 function syncMobileSelections() {
 
