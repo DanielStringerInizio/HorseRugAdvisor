@@ -1445,70 +1445,47 @@ async function fetchWeather() {
         */
 
 
-        const geoURL =
+        /*
+========================================
+RESOLVE LOCATION
+========================================
+*/
 
-            "https://geocoding-api.open-meteo.com/v1/search"
+let place;
 
-            + "?name="
-            + encodeURIComponent(location)
+const confirmed =
+    confirmedMobileLocation;
 
-            + "&count=5"
+if (
+    confirmed &&
+    mobileLocationConfirmed &&
+    location === confirmed.searchText
+) {
 
-            + "&language=en"
+    /*
+    Reuse the already-confirmed location.
+    */
 
-            + "&format=json"
+    place = confirmed;
 
-            + "&countryCode=GB";
+}
+else {
 
+    /*
+    Desktop or unconfirmed lookup.
+    */
 
-        const geoResponse =
-            await fetch(geoURL);
+    place = await findLocation(location);
 
+}
 
-        if (!geoResponse.ok) {
+const latitude = place.latitude;
+const longitude = place.longitude;
 
-            throw new Error(
-                "Location service unavailable."
-            );
-
-        }
-
-
-        const geoData =
-            await geoResponse.json();
-
-
-        if (
-            !geoData.results ||
-            geoData.results.length === 0
-        ) {
-
-            throw new Error(
-                "Location not found. Try a nearby town."
-            );
-
-        }
-
-
-        const place =
-            geoData.results[0];
-
-
-        const latitude =
-            place.latitude;
-
-
-        const longitude =
-            place.longitude;
-
-
-        status.textContent =
-
-            "Location found: "
-
-            + place.name
-
-            + ". Loading forecast...";
+status.textContent =
+    "Location found: "
+    + place.name
+    + ". Loading forecast...";
 
 
         /*
@@ -2924,84 +2901,23 @@ async function mobileConfirmLocation() {
 
     try {
 
-        const geoURL =
+       const place = await findLocation(location);
 
-            "https://geocoding-api.open-meteo.com/v1/search"
+confirmedMobileLocation = {
 
-            + "?name="
-            + encodeURIComponent(location)
+    name: place.name,
 
-            + "&count=5"
+    region: place.region,
 
-            + "&language=en"
+    country: place.country,
 
-            + "&format=json"
+    latitude: place.latitude,
 
-            + "&countryCode=GB";
+    longitude: place.longitude,
 
+    searchText: location
 
-        const response =
-            await fetch(geoURL);
-
-
-        if (!response.ok) {
-
-            throw new Error(
-                "Location service unavailable."
-            );
-
-        }
-
-
-        const data =
-            await response.json();
-
-
-        if (
-            !data.results ||
-            data.results.length === 0
-        ) {
-
-            throw new Error(
-                "We couldn't find that location. Try a nearby town or postcode."
-            );
-
-        }
-
-
-        /*
-        For now use the best matching result.
-
-        We can add a multiple-location chooser
-        later for ambiguous places.
-        */
-
-        const place =
-            data.results[0];
-
-
-        confirmedMobileLocation = {
-
-            name:
-                place.name,
-
-            region:
-                place.admin1 || "",
-
-            country:
-                place.country ||
-                "United Kingdom",
-
-            latitude:
-                place.latitude,
-
-            longitude:
-                place.longitude,
-
-            searchText:
-                location
-
-        };
+};
 
 
         /*
@@ -3060,6 +2976,7 @@ async function mobileConfirmLocation() {
 
     }
 
+    
 
     catch (error) {
 
@@ -3082,7 +2999,137 @@ async function mobileConfirmLocation() {
 
 }
 
+/*
+========================================
+LOCATION LOOKUP
+========================================
+*/
 
+function isUKPostcode(value) {
+
+    const postcodeRegex =
+        /^(GIR\s?0AA|(?:[A-Z]{1,2}\d[A-Z\d]?\s?\d[A-Z]{2}))$/i;
+
+    return postcodeRegex.test(value.trim());
+
+}
+
+
+async function findLocation(searchText) {
+
+    const location = searchText.trim();
+
+    /*
+    UK POSTCODE LOOKUP
+    */
+
+    if (isUKPostcode(location)) {
+
+        const postcode =
+            location.replace(/\s/g, "").toUpperCase();
+
+        const response = await fetch(
+            "https://api.postcodes.io/postcodes/"
+            + encodeURIComponent(postcode)
+        );
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Postcode not found. Please check and try again."
+            );
+
+        }
+
+        const data = await response.json();
+
+        if (!data.result) {
+
+            throw new Error(
+                "No location found for this postcode."
+            );
+
+        }
+
+        const result = data.result;
+
+        return {
+
+            name: result.postcode,
+
+            region:
+                result.admin_district || "",
+
+            country:
+                result.country || "United Kingdom",
+
+            latitude:
+                result.latitude,
+
+            longitude:
+                result.longitude
+
+        };
+
+    }
+
+
+    /*
+    TOWN / CITY LOOKUP
+    */
+
+    const geoURL =
+
+        "https://geocoding-api.open-meteo.com/v1/search"
+
+        + "?name=" + encodeURIComponent(location)
+
+        + "&count=5"
+
+        + "&language=en"
+
+        + "&format=json"
+
+        + "&countryCode=GB";
+
+
+    const response = await fetch(geoURL);
+
+    if (!response.ok) {
+
+        throw new Error(
+            "Location service unavailable."
+        );
+
+    }
+
+    const data = await response.json();
+
+    if (!data.results || !data.results.length) {
+
+        throw new Error(
+            "Location not found. Try a nearby town or full postcode."
+        );
+
+    }
+
+    const place = data.results[0];
+
+    return {
+
+        name: place.name,
+
+        region: place.admin1 || "",
+
+        country: place.country || "United Kingdom",
+
+        latitude: place.latitude,
+
+        longitude: place.longitude
+
+    };
+
+}
 
 function mobileStart() {
 
