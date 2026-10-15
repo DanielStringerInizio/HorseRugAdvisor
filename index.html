@@ -467,6 +467,64 @@ footer {
     }
 }
 
+
+
+/* =========================
+   V4 MOBILE APP EXPERIENCE
+========================= */
+.mobile-app { display: none; }
+
+@media (max-width: 760px) {
+    body { background: #f7f2e8; }
+    .wrapper > .brand,
+    .wrapper > .hero,
+    .wrapper > .location-box,
+    .wrapper > .grid,
+    .wrapper > footer { display: none !important; }
+
+    .wrapper { padding: 0; max-width: none; }
+    .mobile-app { display: block; min-height: 100vh; }
+    .mobile-topbar { display:flex; align-items:center; justify-content:space-between; padding:18px 18px 10px; }
+    .mobile-brand { display:flex; align-items:center; gap:9px; font-weight:800; }
+    .mobile-brand .logo { width:36px; height:36px; font-size:18px; }
+    .mobile-step-count { font-size:12px; color:var(--muted); font-weight:700; }
+    .mobile-progress { height:5px; background:#e2ddd3; margin:0 18px 18px; border-radius:999px; overflow:hidden; }
+    .mobile-progress-bar { height:100%; width:20%; background:var(--tan); transition:width .25s ease; }
+    .mobile-screen { display:none; padding:10px 18px 28px; animation:mobileIn .22s ease; }
+    .mobile-screen.active { display:block; }
+    @keyframes mobileIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:none} }
+    .mobile-hero { background:var(--green); color:white; border-radius:26px; padding:30px 24px; margin-bottom:18px; }
+    .mobile-hero h1 { font-size:40px; line-height:.98; letter-spacing:-2px; margin:8px 0 14px; }
+    .mobile-hero p { color:#dce8e3; line-height:1.5; margin:0; }
+    .mobile-card { background:var(--paper); border:1px solid #e9e2d7; border-radius:22px; padding:22px; margin-bottom:14px; }
+    .mobile-title { font-size:30px; line-height:1.05; letter-spacing:-1px; margin:5px 0 8px; }
+    .mobile-sub { color:var(--muted); line-height:1.5; margin:0 0 20px; }
+    .mobile-input { font-size:17px; padding:15px; }
+    .choice-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .choice-grid.one { grid-template-columns:1fr; }
+    .choice { border:1px solid var(--line); background:white; color:var(--text); border-radius:16px; padding:16px 10px; min-height:82px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; text-align:center; font-size:14px; font-weight:700; }
+    .choice span { font-size:24px; }
+    .choice.selected { background:var(--green); border-color:var(--green); color:white; }
+    .mobile-question { margin:22px 0 10px; font-size:14px; font-weight:800; }
+    .mobile-actions { display:flex; gap:10px; margin-top:18px; }
+    .mobile-actions .secondary { background:#e9e4da; color:var(--text); }
+    .mobile-actions .secondary:hover { background:#ddd7cc; }
+    .mobile-weather { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:16px 0; }
+    .mobile-weather .stat { padding:14px 4px; }
+    .environment-choice { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .environment-choice .choice { min-height:115px; }
+    .mobile-result-hero { background:var(--green); color:white; border-radius:26px; padding:28px 22px; text-align:center; margin:14px 0; }
+    .mobile-result-hero.stable { background:#806449; }
+    .mobile-result-label { text-transform:uppercase; letter-spacing:1.4px; font-size:12px; opacity:.8; font-weight:800; }
+    .mobile-result-weight { font-size:52px; font-weight:850; letter-spacing:-2px; margin:8px 0 4px; }
+    .mobile-result-type { font-size:18px; line-height:1.35; }
+    .why-card { background:white; border:1px solid #e9e2d7; border-radius:18px; padding:18px; line-height:1.55; color:#53645e; }
+    .why-card strong { color:var(--text); }
+    .mobile-link-button { background:transparent; color:var(--green); border:1px solid var(--green); margin-top:10px; }
+    .mobile-disclaimer { font-size:11px; line-height:1.5; color:#7b8581; margin:16px 3px 0; }
+    #mobileWeatherStatus { font-size:13px; color:var(--muted); margin-top:10px; min-height:18px; }
+}
+
 </style>
 </head>
 
@@ -474,6 +532,133 @@ footer {
 <body>
 
 <div class="wrapper">
+
+<!-- V4 MOBILE APP -->
+<div class="mobile-app" id="mobileApp">
+    <div class="mobile-topbar">
+        <div class="mobile-brand"><div class="logo">♞</div> Horse Rug Advisor</div>
+        <div class="mobile-step-count" id="mobileStepCount">Start</div>
+    </div>
+    <div class="mobile-progress"><div class="mobile-progress-bar" id="mobileProgressBar"></div></div>
+
+    <section class="mobile-screen active" data-mobile-step="0">
+        <div class="mobile-hero">
+            <div class="eyebrow">Dress for the weather</div>
+            <h1>What should your horse wear today?</h1>
+            <p>A quick personalised suggestion using your horse and local forecast.</p>
+        </div>
+        <div class="mobile-card">
+            <label for="mobileHorseName">What's your horse called?</label>
+            <input class="mobile-input" id="mobileHorseName" type="text" placeholder="e.g. Bella">
+            <div class="mobile-question">📍 Where are you?</div>
+            <input class="mobile-input" id="mobileLocationInput" type="text" placeholder="Town or UK postcode">
+            <div id="mobileWeatherStatus">We'll use this to check the local forecast.</div>
+        </div>
+        <button onclick="mobileStart()">Get started →</button>
+    </section>
+
+    <section class="mobile-screen" data-mobile-step="1">
+        <div class="eyebrow">01 · Your horse</div>
+        <h2 class="mobile-title">What type is <span class="mobileHorseLabel">your horse</span>?</h2>
+        <p class="mobile-sub">Breed/type is a small modifier. Their actual coat and clipping matter more.</p>
+        <div class="choice-grid">
+            <button class="choice" data-target="breed" data-value="1"><span>🐎</span>Thoroughbred / Fine</button>
+            <button class="choice" data-target="breed" data-value="0"><span>🐴</span>Warmblood / Sport</button>
+            <button class="choice" data-target="breed" data-value="-0.5"><span>🐴</span>Cob</button>
+            <button class="choice" data-target="breed" data-value="-1"><span>🐎</span>Native pony</button>
+            <button class="choice" data-target="breed" data-value="0"><span>🐴</span>Arab</button>
+            <button class="choice" data-target="breed" data-value="0"><span>🐎</span>Other / Mixed</button>
+        </div>
+        <div class="mobile-actions"><button class="secondary" onclick="showMobileStep(0)">← Back</button><button onclick="showMobileStep(2)">Continue →</button></div>
+    </section>
+
+    <section class="mobile-screen" data-mobile-step="2">
+        <div class="eyebrow">02 · Coat & clipping</div>
+        <h2 class="mobile-title">How much natural insulation do they have?</h2>
+        <div class="mobile-question">Natural coat</div>
+        <div class="choice-grid">
+            <button class="choice" data-target="coat" data-value="1">Fine / thin</button>
+            <button class="choice" data-target="coat" data-value="0">Average</button>
+            <button class="choice" data-target="coat" data-value="-1">Thick</button>
+            <button class="choice" data-target="coat" data-value="-2">Very thick / winter</button>
+        </div>
+        <div class="mobile-question">Clip</div>
+        <div class="choice-grid">
+            <button class="choice" data-target="clip" data-value="0">Unclipped</button>
+            <button class="choice" data-target="clip" data-value="1">Partial</button>
+            <button class="choice" data-target="clip" data-value="2">Blanket</button>
+            <button class="choice" data-target="clip" data-value="2.5">Hunter</button>
+            <button class="choice" data-target="clip" data-value="3">Full</button>
+        </div>
+        <div class="mobile-actions"><button class="secondary" onclick="showMobileStep(1)">← Back</button><button onclick="showMobileStep(3)">Continue →</button></div>
+    </section>
+
+    <section class="mobile-screen" data-mobile-step="3">
+        <div class="eyebrow">03 · Condition</div>
+        <h2 class="mobile-title">A little more about <span class="mobileHorseLabel">your horse</span>.</h2>
+        <div class="mobile-question">Body condition</div>
+        <div class="choice-grid">
+            <button class="choice" data-target="condition" data-value="1">Lean / feels cold</button>
+            <button class="choice" data-target="condition" data-value="0">Normal</button>
+            <button class="choice" data-target="condition" data-value="-1">Good-doer</button>
+        </div>
+        <div class="mobile-question">Age</div>
+        <div class="choice-grid">
+            <button class="choice" data-target="age" data-value="0">Young</button>
+            <button class="choice" data-target="age" data-value="0">Adult</button>
+            <button class="choice" data-target="age" data-value="1">Senior</button>
+        </div>
+        <div class="mobile-question">Field shelter</div>
+        <div class="choice-grid">
+            <button class="choice" data-target="shelter" data-value="0">✓ Available</button>
+            <button class="choice" data-target="shelter" data-value="1">Limited / none</button>
+        </div>
+        <div class="mobile-actions"><button class="secondary" onclick="showMobileStep(2)">← Back</button><button onclick="showMobileStep(4)">Continue →</button></div>
+    </section>
+
+    <section class="mobile-screen" data-mobile-step="4">
+        <div class="eyebrow">04 · Environment</div>
+        <h2 class="mobile-title">Where will <span class="mobileHorseLabel">your horse</span> be?</h2>
+        <p class="mobile-sub">We'll focus the final answer on this environment.</p>
+        <div class="environment-choice">
+            <button class="choice selected" data-environment="turnout"><span>🌳</span>TURNOUT<small>Out in the field</small></button>
+            <button class="choice" data-environment="stable"><span>🏠</span>STABLE<small>Indoors / stabled</small></button>
+        </div>
+        <div class="mobile-actions"><button class="secondary" onclick="showMobileStep(3)">← Back</button><button onclick="mobileCheckWeather()">Check weather →</button></div>
+    </section>
+
+    <section class="mobile-screen" data-mobile-step="5">
+        <div class="eyebrow">05 · Today's conditions</div>
+        <h2 class="mobile-title" id="mobileWeatherPlace">Local weather</h2>
+        <div class="mobile-weather">
+            <div class="stat">🌡️<b id="mobileTemp">-</b><small>Now</small></div>
+            <div class="stat">🌙<b id="mobileLow">-</b><small>24h low</small></div>
+            <div class="stat">💨<b id="mobileWind">-</b><small>Wind</small></div>
+        </div>
+        <div class="mobile-card"><strong id="mobileRainText">Checking forecast…</strong><div id="mobileWeatherDetail" class="mobile-sub" style="margin:7px 0 0">We'll use the next 24 hours in the recommendation.</div></div>
+        <div class="mobile-actions"><button class="secondary" onclick="showMobileStep(4)">← Back</button><button onclick="mobileShowResult()">Find my rug →</button></div>
+    </section>
+
+    <section class="mobile-screen" data-mobile-step="6">
+        <div class="eyebrow">Your recommendation</div>
+        <h2 class="mobile-title" id="mobileResultTitle">Today's starting point</h2>
+        <div class="mobile-result-hero" id="mobileResultHero">
+            <div class="mobile-result-label" id="mobileEnvironmentLabel">🌳 TURNOUT</div>
+            <div class="mobile-result-weight" id="mobileResultWeight">-</div>
+            <div class="mobile-result-type" id="mobileResultType">-</div>
+        </div>
+        <div class="mobile-weather">
+            <div class="stat">🌡️<b id="mobileResultTemp">-</b><small>Now</small></div>
+            <div class="stat">🌙<b id="mobileResultLow">-</b><small>Low</small></div>
+            <div class="stat">💨<b id="mobileResultWind">-</b><small>Wind</small></div>
+        </div>
+        <div class="why-card"><strong>Why this suggestion?</strong><p id="mobileReasonText"></p></div>
+        <button class="mobile-link-button" id="mobileAlternateButton" onclick="toggleMobileEnvironmentResult()">Also see stable recommendation →</button>
+        <div class="mobile-actions"><button class="secondary" onclick="showMobileStep(1)">Edit horse</button><button onclick="mobileReset()">Check another horse →</button></div>
+        <div class="mobile-disclaimer"><strong>Important:</strong> General guidance only, not a veterinary prescription. Check your horse regularly for warmth, sweating, shivering and comfort, and adjust accordingly.</div>
+    </section>
+</div>
+
 
     <!-- BRAND -->
 
@@ -2602,6 +2787,139 @@ document
         }
     );
 
+
+
+
+/* =========================
+   V4 MOBILE APP CONTROLLER
+========================= */
+let mobileEnvironment = "turnout";
+let mobileShowingEnvironment = "turnout";
+
+function showMobileStep(step) {
+    document.querySelectorAll('.mobile-screen').forEach(el => el.classList.remove('active'));
+    const screen = document.querySelector('[data-mobile-step="' + step + '"]');
+    if (screen) screen.classList.add('active');
+    const labels = ['Start','1 / 5','2 / 5','3 / 5','4 / 5','5 / 5','Result'];
+    const widths = [10,20,40,60,80,100,100];
+    const count = document.getElementById('mobileStepCount');
+    const bar = document.getElementById('mobileProgressBar');
+    if (count) count.textContent = labels[step] || '';
+    if (bar) bar.style.width = (widths[step] || 10) + '%';
+    window.scrollTo({top:0, behavior:'smooth'});
+    syncMobileSelections();
+}
+
+function mobileHorseName() {
+    const name = document.getElementById('mobileHorseName').value.trim();
+    return name || 'your horse';
+}
+
+function updateMobileHorseLabels() {
+    const name = mobileHorseName();
+    document.querySelectorAll('.mobileHorseLabel').forEach(el => el.textContent = name);
+}
+
+function mobileStart() {
+    updateMobileHorseLabels();
+    const loc = document.getElementById('mobileLocationInput').value.trim();
+    if (loc) document.getElementById('locationInput').value = loc;
+    showMobileStep(1);
+}
+
+function syncMobileSelections() {
+    document.querySelectorAll('.choice[data-target]').forEach(btn => {
+        const target = document.getElementById(btn.dataset.target);
+        if (!target) return;
+        btn.classList.toggle('selected', String(target.value) === String(btn.dataset.value));
+    });
+    document.querySelectorAll('.choice[data-environment]').forEach(btn => {
+        btn.classList.toggle('selected', btn.dataset.environment === mobileEnvironment);
+    });
+}
+
+document.querySelectorAll('.choice[data-target]').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const target = document.getElementById(btn.dataset.target);
+        if (target) {
+            target.value = btn.dataset.value;
+            target.dispatchEvent(new Event('change', {bubbles:true}));
+        }
+        syncMobileSelections();
+    });
+});
+
+document.querySelectorAll('.choice[data-environment]').forEach(btn => {
+    btn.addEventListener('click', () => {
+        mobileEnvironment = btn.dataset.environment;
+        mobileShowingEnvironment = mobileEnvironment;
+        syncMobileSelections();
+    });
+});
+
+async function mobileCheckWeather() {
+    const mobileLocation = document.getElementById('mobileLocationInput').value.trim();
+    if (!mobileLocation) {
+        document.getElementById('mobileWeatherStatus').textContent = 'Please enter a town or postcode first.';
+        showMobileStep(0);
+        return;
+    }
+    document.getElementById('locationInput').value = mobileLocation;
+    document.getElementById('mobileWeatherStatus').textContent = 'Checking live weather…';
+    await fetchWeather();
+    const statusText = document.getElementById('weatherStatus').textContent;
+    document.getElementById('mobileWeatherStatus').textContent = statusText;
+    if (!liveWeatherLoaded) { showMobileStep(0); return; }
+    const placeMatch = statusText.match(/updated for ([^·]+)/i);
+    document.getElementById('mobileWeatherPlace').textContent = placeMatch ? placeMatch[1].trim() : mobileLocation;
+    updateMobileWeatherSummary();
+    showMobileStep(5);
+}
+
+function updateMobileWeatherSummary() {
+    const temp = document.getElementById('temperature').value + '°C';
+    const low = document.getElementById('overnightLow').value + '°C';
+    const wind = document.getElementById('wind').value + ' mph';
+    const rain = Number(document.getElementById('rain').value);
+    const rainText = rain === 0 ? '☀️ Dry conditions forecast' : rain === 1 ? '🌦️ Light rain forecast' : '🌧️ Heavy / persistent rain forecast';
+    ['mobileTemp','mobileResultTemp'].forEach(id => { const e=document.getElementById(id); if(e)e.textContent=temp; });
+    ['mobileLow','mobileResultLow'].forEach(id => { const e=document.getElementById(id); if(e)e.textContent=low; });
+    ['mobileWind','mobileResultWind'].forEach(id => { const e=document.getElementById(id); if(e)e.textContent=wind; });
+    const rainEl=document.getElementById('mobileRainText'); if(rainEl) rainEl.textContent=rainText;
+}
+
+function mobileShowResult() {
+    calculateRug();
+    mobileShowingEnvironment = mobileEnvironment;
+    renderMobileResult();
+    showMobileStep(6);
+}
+
+function renderMobileResult() {
+    const stable = mobileShowingEnvironment === 'stable';
+    const name = mobileHorseName();
+    document.getElementById('mobileResultTitle').textContent = name === 'your horse' ? "Today's starting point" : name + "'s recommendation";
+    document.getElementById('mobileEnvironmentLabel').textContent = stable ? '🏠 STABLE' : '🌳 TURNOUT';
+    document.getElementById('mobileResultWeight').textContent = document.getElementById(stable ? 'stableWeight' : 'turnoutWeight').textContent;
+    document.getElementById('mobileResultType').textContent = document.getElementById(stable ? 'stableType' : 'turnoutType').textContent;
+    document.getElementById('mobileReasonText').textContent = document.getElementById('reasonText').textContent;
+    document.getElementById('mobileResultHero').classList.toggle('stable', stable);
+    document.getElementById('mobileAlternateButton').textContent = stable ? 'Also see turnout recommendation →' : 'Also see stable recommendation →';
+    updateMobileWeatherSummary();
+}
+
+function toggleMobileEnvironmentResult() {
+    mobileShowingEnvironment = mobileShowingEnvironment === 'turnout' ? 'stable' : 'turnout';
+    renderMobileResult();
+}
+
+function mobileReset() {
+    document.getElementById('mobileHorseName').value = '';
+    updateMobileHorseLabels();
+    showMobileStep(0);
+}
+
+syncMobileSelections();
 
 </script>
 
