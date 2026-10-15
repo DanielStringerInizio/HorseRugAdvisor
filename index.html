@@ -621,7 +621,7 @@ footer {
         <h2 class="mobile-title">Where will <span class="mobileHorseLabel">your horse</span> be?</h2>
         <p class="mobile-sub">We'll focus the final answer on this environment.</p>
         <div class="environment-choice">
-            <button class="choice selected" data-environment="turnout"><span>🌳</span>TURNOUT<small>Out in the field</small></button>
+            <button class="choice" data-environment="turnout"><span>🌳</span>TURNOUT<small>Out in the field</small></button>
             <button class="choice" data-environment="stable"><span>🏠</span>STABLE<small>Indoors / stabled</small></button>
         </div>
         <div class="mobile-actions"><button class="secondary" onclick="showMobileStep(3)">← Back</button><button onclick="mobileCheckWeather()">Check weather →</button></div>
@@ -2793,8 +2793,18 @@ document
 /* =========================
    V4 MOBILE APP CONTROLLER
 ========================= */
-let mobileEnvironment = "turnout";
+let mobileEnvironment = null;
 let mobileShowingEnvironment = "turnout";
+
+const mobileAnswered = {
+    breed: false,
+    coat: false,
+    clip: false,
+    condition: false,
+    age: false,
+    shelter: false,
+    environment: false
+};
 
 function showMobileStep(step) {
     document.querySelectorAll('.mobile-screen').forEach(el => el.classList.remove('active'));
@@ -2828,34 +2838,147 @@ function mobileStart() {
 }
 
 function syncMobileSelections() {
-    document.querySelectorAll('.choice[data-target]').forEach(btn => {
-        const target = document.getElementById(btn.dataset.target);
-        if (!target) return;
-        btn.classList.toggle('selected', String(target.value) === String(btn.dataset.value));
-    });
-    document.querySelectorAll('.choice[data-environment]').forEach(btn => {
-        btn.classList.toggle('selected', btn.dataset.environment === mobileEnvironment);
-    });
+
+    document
+        .querySelectorAll(".choice[data-target]")
+        .forEach(btn => {
+
+            const targetName =
+                btn.dataset.target;
+
+            const target =
+                document.getElementById(
+                    targetName
+                );
+
+            if (!target)
+                return;
+
+
+            const isSelected =
+
+                mobileAnswered[targetName] === true
+
+                &&
+
+                String(target.value) ===
+                String(btn.dataset.value);
+
+
+            btn.classList.toggle(
+                "selected",
+                isSelected
+            );
+
+        });
+
+
+    document
+        .querySelectorAll(
+            ".choice[data-environment]"
+        )
+        .forEach(btn => {
+
+            const isSelected =
+
+                mobileAnswered.environment === true
+
+                &&
+
+                btn.dataset.environment ===
+                mobileEnvironment;
+
+
+            btn.classList.toggle(
+                "selected",
+                isSelected
+            );
+
+        });
+
 }
 
-document.querySelectorAll('.choice[data-target]').forEach(btn => {
-    btn.addEventListener('click', () => {
-        const target = document.getElementById(btn.dataset.target);
-        if (target) {
-            target.value = btn.dataset.value;
-            target.dispatchEvent(new Event('change', {bubbles:true}));
-        }
-        syncMobileSelections();
-    });
-});
+document
+    .querySelectorAll(
+        ".choice[data-target]"
+    )
+    .forEach(btn => {
 
-document.querySelectorAll('.choice[data-environment]').forEach(btn => {
-    btn.addEventListener('click', () => {
-        mobileEnvironment = btn.dataset.environment;
-        mobileShowingEnvironment = mobileEnvironment;
-        syncMobileSelections();
+        btn.addEventListener(
+            "click",
+            () => {
+
+                const targetName =
+                    btn.dataset.target;
+
+                const target =
+                    document.getElementById(
+                        targetName
+                    );
+
+
+                if (target) {
+
+                    target.value =
+                        btn.dataset.value;
+
+
+                    /*
+                    This question has now
+                    actually been answered.
+                    */
+
+                    mobileAnswered[targetName] =
+                        true;
+
+
+                    target.dispatchEvent(
+                        new Event(
+                            "change",
+                            {
+                                bubbles: true
+                            }
+                        )
+                    );
+
+                }
+
+
+                syncMobileSelections();
+
+            }
+        );
+
     });
-});
+
+document
+    .querySelectorAll(
+        ".choice[data-environment]"
+    )
+    .forEach(btn => {
+
+        btn.addEventListener(
+            "click",
+            () => {
+
+                mobileEnvironment =
+                    btn.dataset.environment;
+
+
+                mobileShowingEnvironment =
+                    mobileEnvironment;
+
+
+                mobileAnswered.environment =
+                    true;
+
+
+                syncMobileSelections();
+
+            }
+        );
+
+    });
 
 async function mobileCheckWeather() {
     const mobileLocation = document.getElementById('mobileLocationInput').value.trim();
